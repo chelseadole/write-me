@@ -23,7 +23,7 @@ Add additional notes about how to deploy this on a live system
 ## Authors
 
 **Chelsea Dole**
-**Darren Haynes
+**Darren Haynes**
 **Gabriel Meringolo**
 **Chris Closser**
 **Matt Favoino**
