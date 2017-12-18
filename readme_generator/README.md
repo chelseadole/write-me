@@ -25,3 +25,12 @@ Now now that you've cloned your repo and changed directories into the project, c
 ##### *Serving Locally*
 Once you have cloned the application and installed the requirements, you can serve the project on your local machine. Once you have executed this command, open your browser, and go to `http://localhost:8000/`
 `$ ./manage.py runserver`
+### Test Suite
+##### *Running Tests*
+This application uses pytest as a testing suite. To run tests, run:
+
+`$ pytest`
+
+To view test coverage, run:
+
+`$ pytest --cov`

@@ -22,6 +22,7 @@ if __name__ == '__main__':
         w.write(key_features)
 
         w.write_heading('Getting Started', 3)
+        w.write_hrule()
 
         # GETTING STARTED: Installation requirements
         w.write_heading(mg.emphasis('Prerequisites'), 5)
@@ -49,8 +50,9 @@ if __name__ == '__main__':
         w.writeline('Once you have cloned the application and installed the requirements, you can serve the project on your local machine. Once you have executed this command, open your browser, and go to `http://localhost:8000/`')
         w.writeline('`$ ./manage.py runserver`')
 
-        # TESTS: Running
+        # TESTS: Running & Files
         w.write_heading('Test Suite', 3)
+        w.write_hrule()
         w.write_heading(mg.emphasis('Running Tests'), 5)
         w.writeline('This application uses pytest as a testing suite. To run tests, run:')
         w.writeline()
@@ -59,3 +61,16 @@ if __name__ == '__main__':
         w.writeline('To view test coverage, run:')
         w.writeline()
         w.writeline('`$ pytest --cov`')
+        w.write_heading(mg.emphasis('Test Files'), 5)
+        w.writeline('The testing files for this project are:')
+        test_files = mg.List()
+        test_files.append('imager_images/tests.py')
+        test_files.append('imager_profiles/tests.py')
+        test_files.append('imager_api/tests.py')
+        w.write(test_files)
+
+
+
+
+
+
