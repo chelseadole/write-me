@@ -23,3 +23,16 @@ if __name__ == '__main__':
 
         # Project Download/"Getting Started" Instructions
         writer.write_heading('Getting Started', 3)
+        writer.write_heading('Installation', 4)
+        writer.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository, create a new virtual environment, and install the repo\'s requirements into your VE. To accomplish this, execute these commands:')
+        writer.writeline()
+        writer.writeline('`$ git clone https://github.com/chelseadole/write-me.git`')
+        writer.writeline('`$ cd write-me`')
+        writer.writeline('`$ python3 -m venv ENV`')
+        writer.writeline('`$ source ENV/bin/activate`')
+        writer.writeline('`$ pip install -r requirements.txt`')
+
+        # Serving the App
+        writer.write_heading('Serving Locally', 4)
+        writer.writeline('Once you have cloned the application and installed the requirements, you can serve the project on your local machine. Once you have executed this command, open your browser, and go to `http://localhost:8000/`')
+        writer.writeline('`$ ./manage.py runserver')
