@@ -15,9 +15,9 @@ def repo_fs():
                 PY_FILES.append(os.path.join(root, file))
             if file.endswith(".yml"):
                 YML_FILES.append(os.path.join(root, file))
-            if file.endswith(".pip"):
+            if file.startswith("requirements"):
                 PIP_FILES.append(os.path.join(root, file))
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma no cover
     print(repo_fs())

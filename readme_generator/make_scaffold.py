@@ -7,7 +7,9 @@ import os
 os.system('rm README.md')
 os.system('touch README.md')
 
-if __name__ == '__main__':
+
+def main():
+    """Create README."""
     with open('README.md', 'w') as f:
         writer = mg.Writer(f)
         writer.write_heading('Project Title', 1)
@@ -36,3 +38,4 @@ if __name__ == '__main__':
         writer.write_heading('Serving Locally', 4)
         writer.writeline('Once you have cloned the application and installed the requirements, you can serve the project on your local machine. Once you have executed this command, open your browser, and go to `http://localhost:8000/`')
         writer.writeline('`$ ./manage.py runserver')
+    return "I happened"
