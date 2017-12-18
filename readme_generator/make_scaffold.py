@@ -2,7 +2,7 @@
 import markdown_generator as mg
 import os
 
-from scaffold_options import test_options, serving_options
+from scaffold_options import test_options, serving_options, built_with_opts
 
 os.system('rm README.md')
 os.system('touch README.md')
@@ -54,11 +54,12 @@ if __name__ == '__main__':
         w.writeline('`$ source ENV/bin/activate`')
         w.writeline('`$ pip install -r requirements.txt`')
 
-        # GETTING STARTED: Serving the App
-        w.write_heading(mg.emphasis('Serving Locally'), 5)
-        w.writeline('Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`:')
-        w.writeline('`$ ./manage.py runserver`')
-        w.writeline('Once you have executed this command, open your browser, and go to `localhost:8000/`.')
+        if has_web_framework:
+            # GETTING STARTED: Serving the App
+            w.write_heading(mg.emphasis('Serving Locally'), 5)
+            w.writeline('Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`:')
+            w.writeline('`$ ./manage.py runserver`')
+            w.writeline('Once you have executed this command, open your browser, and go to `localhost:8000/`.')
 
         # TESTS: Running & Files
         w.write_heading('Test Suite', 3)
@@ -80,18 +81,19 @@ if __name__ == '__main__':
         test_files.append('`imager_api/tests.py`')
         w.write(test_files)
 
-        # URLS - table
-        w.write_heading('URLs', 3)
-        w.write_hrule()
-        w.writeline('The URLs for this project are:')
-        w.writeline()
-        urls_table = mg.Table()
-        urls_table.add_column('URL', mg.Alignment.CENTER)
-        urls_table.add_column('Description', mg.Alignment.CENTER)
-        urls_table.append('`/images`', 'Library of all images')
-        urls_table.append('`/images/edit`', 'Edit view for a single image')
-        urls_table.append('`/images/add`', 'Add form for a new image')
-        w.write(urls_table)
+        if has_web_framework:
+            # URLS - table
+            w.write_heading('URLs', 3)
+            w.write_hrule()
+            w.writeline('The URLs for this project are:')
+            w.writeline()
+            urls_table = mg.Table()
+            urls_table.add_column('URL', mg.Alignment.CENTER)
+            urls_table.add_column('Description', mg.Alignment.CENTER)
+            urls_table.append('`/images`', 'Library of all images')
+            urls_table.append('`/images/edit`', 'Edit view for a single image')
+            urls_table.append('`/images/add`', 'Add form for a new image')
+            w.write(urls_table)
 
         # TOOLS
         w.write_heading('Built With', 3)
