@@ -34,4 +34,10 @@ def parse_test_files():
 
 
 if __name__ == '__main__':  # pragma no cover
-    print(repo_fs())
+    repo_fs()
+    print('.py files:\n', PY_FILES,
+          '\n.yml files:\n', YML_FILES,
+          '\nrequirements:\n', PIP_FILES,
+          '\nREADME.md files:\n', README_FILES,
+          '\ntest files:\n', TEST_FILES
+          )
