@@ -21,18 +21,30 @@ if __name__ == '__main__':
         key_features.append('Feature #3')
         writer.write(key_features)
 
-        # Project Download/"Getting Started" Instructions
         writer.write_heading('Getting Started', 3)
-        writer.write_heading('Installation', 4)
+
+        # Installation requirements
+        writer.write_heading(mg.emphasis('Prerequisites'), 5)
+        prereqs = mg.List()
+        prereqs.append(mg.link('https://www.python.org/downloads/', 'python (3.6+)'))
+        prereqs.append(mg.link('https://pip.pypa.io/en/stable/', 'pip'))
+        prereqs.append(mg.link('https://git-scm.com/', 'git'))
+        writer.write(prereqs)
+
+        # Cloning/VE Instructions
+        writer.write_heading(mg.emphasis('Installation'), 5)
         writer.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository, create a new virtual environment, and install the repo\'s requirements into your VE. To accomplish this, execute these commands:')
         writer.writeline()
         writer.writeline('`$ git clone https://github.com/chelseadole/write-me.git`')
         writer.writeline('`$ cd write-me`')
+        writer.writeline()
+        writer.writeline('Now now that you\'ve cloned your repo and changed directories into the project, create a virtual environment, and download the project\'s requirements into your VE.')
+        writer.writeline()
         writer.writeline('`$ python3 -m venv ENV`')
         writer.writeline('`$ source ENV/bin/activate`')
         writer.writeline('`$ pip install -r requirements.txt`')
 
         # Serving the App
-        writer.write_heading('Serving Locally', 4)
+        writer.write_heading(mg.emphasis('Serving Locally'), 5)
         writer.writeline('Once you have cloned the application and installed the requirements, you can serve the project on your local machine. Once you have executed this command, open your browser, and go to `http://localhost:8000/`')
-        writer.writeline('`$ ./manage.py runserver')
+        writer.writeline('`$ ./manage.py runserver`')
