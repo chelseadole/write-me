@@ -9,6 +9,7 @@ repo_fs()
 
 def test_py_files_list():
     """Test found .py files."""
+    import pdb; pdb.set_trace()
     assert './src/test/test_class.py' in TEST_FILES
 
 
