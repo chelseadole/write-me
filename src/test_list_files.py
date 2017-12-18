@@ -1,7 +1,7 @@
 """Test for files listed."""
 
 import pytest
-from list_files import repo_fs, PY_FILES, YML_FILES, PIP_FILES
+from list_files import repo_fs, PY_FILES, YML_FILES, PIP_FILES, README_FILES, TEST_FILES
 
 
 repo_fs()
@@ -9,7 +9,7 @@ repo_fs()
 
 def test_py_files_list():
     """Test found .py files."""
-    assert './src/test/test_class.py' in PY_FILES
+    assert './src/test/test_class.py' in TEST_FILES
 
 
 def test_py_files_list_only_py():
