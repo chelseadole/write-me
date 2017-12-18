@@ -18,5 +18,6 @@ def repo_fs():
             if file.startswith("requirements"):
                 PIP_FILES.append(os.path.join(root, file))
 
-if __name__ == '__main__':
+
+if __name__ == '__main__':  # pragma no cover
     print(repo_fs())

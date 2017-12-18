@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/chelseadole/write-me.svg?branch=staging)](https://travis-ci.org/chelseadole/write-me) [![Coverage Status](https://coveralls.io/repos/github/chelseadole/write-me/badge.svg)](https://coveralls.io/github/chelseadole/write-me)
 # PyPi README helper package (for now, may change soon)
 
 Python package to assist developers with constructing README as project evolves. (for now, may change soon)
