@@ -6,7 +6,7 @@ setup(
     name='write_me',
     packages=['write_me'],
     entry_points={
-        'console_scripts': []
+        'console_scripts': ['genreadme = readme_generator.make_scaffold:main'],
     },
     version='0.1',
     description='Python package to assist developers with constructing README as project evolves.',
