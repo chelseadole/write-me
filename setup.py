@@ -9,7 +9,7 @@ setup(
         'console_scripts': []
     },
     version='0.1',
-    description='Make soup for the rats',
+    description='Python package to assist developers with constructing README as project evolves.',
     author=['Chelsea Dole',
             'Matty Favoino',
             'Darren Haynes',
