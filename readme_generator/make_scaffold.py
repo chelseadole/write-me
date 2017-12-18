@@ -21,6 +21,14 @@ if __name__ == '__main__':
         key_features.append('Feature #3')
         w.write(key_features)
 
+        # AUTHORS
+        w.write_heading('Authors', 3)
+        w.write_hrule()
+        authors = mg.List()
+        authors.append(mg.link('www.github.com/chelseadole', 'Person1'))
+        authors.append(mg.link('www.github.com/chelseadole', 'Person2'))
+        authors.append(mg.link('www.github.com/chelseadole', 'Person3'))
+
         w.write_heading('Getting Started', 3)
         w.write_hrule()
 
@@ -69,8 +77,14 @@ if __name__ == '__main__':
         test_files.append('imager_api/tests.py')
         w.write(test_files)
 
+        # URLs
+        w.write_heading('URLs', 3)
+        w.write_hrule()
+        w.writeline('The URLs for this project are:')
+        url_list = mg.List()
+        url_list.append('/images')
+        url_list.append('/images/add')
+        url_list.append('/images/edit')
+        w.write(url_list)
 
-
-
-
-
+        # 
