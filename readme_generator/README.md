@@ -52,9 +52,12 @@ The testing files for this project are:
 ### URLs
 ---
 The URLs for this project are:
-* `/images`
-* `/images/add`
-* `/images/edit`
+
+| URL | Description |
+|:---:|:---:|
+| `/images` | Library of all images |
+| `/images/edit` | Edit view for a single image |
+| `/images/add` | Add form for a new image |
 
 ### Built With
 ---

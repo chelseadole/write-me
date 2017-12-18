@@ -1,6 +1,5 @@
 """Testing module options for README, with varying syntax for running tests."""
 
-
 test_options = {
     "nose_testing": {
         "name": "nose",
@@ -47,4 +46,5 @@ built_with_opts = {
     "languages": {
         "opts": ["python", "javascript", "react", "node", "java", "swift", "c#", "c++", "c", "php", "ruby on rails", "haskell", "coffeescript", "html", "css"],
         "description": " - programming language"
+    }
 }

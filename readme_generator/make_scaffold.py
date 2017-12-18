@@ -80,15 +80,18 @@ if __name__ == '__main__':
         test_files.append('`imager_api/tests.py`')
         w.write(test_files)
 
-        # URLs
+        # URLS - table
         w.write_heading('URLs', 3)
         w.write_hrule()
         w.writeline('The URLs for this project are:')
-        url_list = mg.List()
-        url_list.append('`/images`')
-        url_list.append('`/images/add`')
-        url_list.append('`/images/edit`')
-        w.write(url_list)
+        w.writeline()
+        urls_table = mg.Table()
+        urls_table.add_column('URL', mg.Alignment.CENTER)
+        urls_table.add_column('Description', mg.Alignment.CENTER)
+        urls_table.append('`/images`', 'Library of all images')
+        urls_table.append('`/images/edit`', 'Edit view for a single image')
+        urls_table.append('`/images/add`', 'Add form for a new image')
+        w.write(urls_table)
 
         # TOOLS
         w.write_heading('Built With', 3)
