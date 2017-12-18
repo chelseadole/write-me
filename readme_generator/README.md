@@ -32,7 +32,7 @@ Now now that you have cloned your repo and changed directories into the project,
 ##### *Serving Locally*
 Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`:
 `$ ./manage.py runserver`
-Once you have executed this command, open your browser, and go to `http://localhost:8000/`.
+Once you have executed this command, open your browser, and go to `localhost:8000/`.
 ### Test Suite
 ---
 ##### *Running Tests*
@@ -55,4 +55,22 @@ The URLs for this project are:
 * `/images`
 * `/images/add`
 * `/images/edit`
+
+### Built With
+---
+* Django
+* Postgres
+* Python
+* MongoDB
+
+### Contributions
+---
+If you wish to contribute to this project, please contact NAME1 or NAME2.
+### License
+---
+This project is licensed under the MIT License - see the LICENSE.md file for details.
+### Acknowledgements
+---
+* Nicholas Hunt-Walker
+* Coffee
 

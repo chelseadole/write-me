@@ -2,6 +2,8 @@
 import markdown_generator as mg
 import os
 
+from test_options import test_options
+
 # from gather_data import models, apps, tests, basic_data
 # data necessary = ['Project Title']
 os.system('rm README.md')
