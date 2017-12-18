@@ -15,9 +15,9 @@ def repo_fs():
                 PY_FILES.append(os.path.join(root, file))
             if file.endswith(".yml"):
                 YML_FILES.append(os.path.join(root, file))
-            if file.endswith(".pip"):
+            if file.startswith("requirements"):
                 PIP_FILES.append(os.path.join(root, file))
 
-
+    import pdb; pdb.set_trace()
 if __name__ == '__main__':
     print(repo_fs())
