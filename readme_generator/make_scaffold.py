@@ -28,6 +28,7 @@ if __name__ == '__main__':
         authors.append(mg.link('www.github.com/chelseadole', 'Person1'))
         authors.append(mg.link('www.github.com/chelseadole', 'Person2'))
         authors.append(mg.link('www.github.com/chelseadole', 'Person3'))
+        w.write(authors)
 
         w.write_heading('Getting Started', 3)
         w.write_hrule()
@@ -42,12 +43,12 @@ if __name__ == '__main__':
 
         # GETTING STARTED: Cloning/VE Instructions
         w.write_heading(mg.emphasis('Installation'), 5)
-        w.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository, create a new virtual environment, and install the repo\'s requirements into your VE. To accomplish this, execute these commands:')
+        w.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository, create a new virtual environment, and install the repo requirements into your VE. To accomplish this, execute these commands:')
         w.writeline()
         w.writeline('`$ git clone https://github.com/chelseadole/write-me.git`')
         w.writeline('`$ cd write-me`')
         w.writeline()
-        w.writeline('Now now that you\'ve cloned your repo and changed directories into the project, create a virtual environment, and download the project\'s requirements into your VE.')
+        w.writeline('Now now that you have cloned your repo and changed directories into the project, create a virtual environment, and download the project requirements into your VE.')
         w.writeline()
         w.writeline('`$ python3 -m venv ENV`')
         w.writeline('`$ source ENV/bin/activate`')
@@ -55,8 +56,9 @@ if __name__ == '__main__':
 
         # GETTING STARTED: Serving the App
         w.write_heading(mg.emphasis('Serving Locally'), 5)
-        w.writeline('Once you have cloned the application and installed the requirements, you can serve the project on your local machine. Once you have executed this command, open your browser, and go to `http://localhost:8000/`')
+        w.writeline('Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`:')
         w.writeline('`$ ./manage.py runserver`')
+        w.writeline('Once you have executed this command, open your browser, and go to `localhost:8000/`.')
 
         # TESTS: Running & Files
         w.write_heading('Test Suite', 3)
@@ -69,12 +71,13 @@ if __name__ == '__main__':
         w.writeline('To view test coverage, run:')
         w.writeline()
         w.writeline('`$ pytest --cov`')
+
         w.write_heading(mg.emphasis('Test Files'), 5)
         w.writeline('The testing files for this project are:')
         test_files = mg.List()
-        test_files.append('imager_images/tests.py')
-        test_files.append('imager_profiles/tests.py')
-        test_files.append('imager_api/tests.py')
+        test_files.append('`imager_images/tests.py`')
+        test_files.append('`imager_profiles/tests.py`')
+        test_files.append('`imager_api/tests.py`')
         w.write(test_files)
 
         # URLs
@@ -82,9 +85,35 @@ if __name__ == '__main__':
         w.write_hrule()
         w.writeline('The URLs for this project are:')
         url_list = mg.List()
-        url_list.append('/images')
-        url_list.append('/images/add')
-        url_list.append('/images/edit')
+        url_list.append('`/images`')
+        url_list.append('`/images/add`')
+        url_list.append('`/images/edit`')
         w.write(url_list)
 
-        # 
+        # TOOLS
+        w.write_heading('Built With', 3)
+        w.write_hrule()
+        tools_list = mg.List()
+        tools_list.append('Django')
+        tools_list.append('Postgres')
+        tools_list.append('Python')
+        tools_list.append('MongoDB')
+        w.write(tools_list)
+
+        # CONTRIBUTIONS
+        w.write_heading('Contributions', 3)
+        w.write_hrule()
+        w.writeline('If you wish to contribute to this project, please contact NAME1 or NAME2.')
+
+        # LICENSE
+        w.write_heading('License', 3)
+        w.write_hrule()
+        w.writeline('This project is licensed under the MIT License - see the LICENSE.md file for details.')
+
+        # ACKNOWLEDGEMENTS
+        w.write_heading('Acknowledgements', 3)
+        w.write_hrule()
+        shoutouts = mg.List()
+        shoutouts.append('Nicholas Hunt-Walker')
+        shoutouts.append('Coffee')
+        w.write(shoutouts)

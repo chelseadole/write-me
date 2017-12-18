@@ -5,27 +5,36 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 * Feature #2
 * Feature #3
 
+### Authors
+---
+* [Person1](www.github.com/chelseadole)
+* [Person2](www.github.com/chelseadole)
+* [Person3](www.github.com/chelseadole)
+
 ### Getting Started
+---
 ##### *Prerequisites*
 * [python (3.6+)](https://www.python.org/downloads/)
 * [pip](https://pip.pypa.io/en/stable/)
 * [git](https://git-scm.com/)
 
 ##### *Installation*
-First, clone the project repo from Github. Then, change directories into the cloned repository, create a new virtual environment, and install the repo's requirements into your VE. To accomplish this, execute these commands:
+First, clone the project repo from Github. Then, change directories into the cloned repository, create a new virtual environment, and install the repo requirements into your VE. To accomplish this, execute these commands:
 
 `$ git clone https://github.com/chelseadole/write-me.git`
 `$ cd write-me`
 
-Now now that you've cloned your repo and changed directories into the project, create a virtual environment, and download the project's requirements into your VE.
+Now now that you have cloned your repo and changed directories into the project, create a virtual environment, and download the project requirements into your VE.
 
 `$ python3 -m venv ENV`
 `$ source ENV/bin/activate`
 `$ pip install -r requirements.txt`
 ##### *Serving Locally*
-Once you have cloned the application and installed the requirements, you can serve the project on your local machine. Once you have executed this command, open your browser, and go to `http://localhost:8000/`
+Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`:
 `$ ./manage.py runserver`
+Once you have executed this command, open your browser, and go to `http://localhost:8000/`.
 ### Test Suite
+---
 ##### *Running Tests*
 This application uses pytest as a testing suite. To run tests, run:
 
@@ -34,3 +43,16 @@ This application uses pytest as a testing suite. To run tests, run:
 To view test coverage, run:
 
 `$ pytest --cov`
+##### *Test Files*
+The testing files for this project are:
+* `imager_images/tests.py`
+* `imager_profiles/tests.py`
+* `imager_api/tests.py`
+
+### URLs
+---
+The URLs for this project are:
+* `/images`
+* `/images/add`
+* `/images/edit`
+
