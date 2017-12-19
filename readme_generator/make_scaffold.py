@@ -7,6 +7,8 @@ from scaffold_options import test_options, serving_options, built_with_opts
 os.system('rm README.md')
 os.system('touch README.md')
 
+has_web_framework = True
+
 if __name__ == '__main__':
     with open('README.md', 'w') as f:
         w = mg.Writer(f)
@@ -122,3 +124,5 @@ if __name__ == '__main__':
         shoutouts.append('Nicholas Hunt-Walker')
         shoutouts.append('Coffee')
         w.write(shoutouts)
+
+        w.writeline(mg.emphasis('This README was generated using ' + mg.link('https://github.com/chelseadole/write-me', 'writeme.')))
