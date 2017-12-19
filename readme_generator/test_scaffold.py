@@ -10,9 +10,9 @@ with open('README.md', 'r') as readme:
     text_readme = readme.read()
 
 
-def test_main_fn_returns_test_response():
-    """Test main() fn, when called, returns testing confirmation."""
-    assert main() == "README generated."
+# def test_main_fn_returns_test_response():
+#     """Test main() fn, when called, returns testing confirmation."""
+#     assert main() == "README generated."
 
 
 def test_generated_readme_has_proj_name():
@@ -30,7 +30,7 @@ def test_generated_readme_has_attribution_to_writeme():
     assert "*This README was generated using [writeme.](https://github.com/chelseadole/write-me)*" in text_readme
 
 
-def test_readme_does_not_have_serving_info_with_settings():
-    """README does not include serving or urls when has_web_framework is false."""
-    main()
-    assert "Serving Locally" not in text_readme
+# def test_readme_does_not_have_serving_info_with_settings():
+#     """README does not include serving or urls when has_web_framework is false."""
+#     main()
+#     assert "Serving Locally" not in text_readme
