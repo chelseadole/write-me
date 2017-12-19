@@ -45,7 +45,7 @@ The testing files for this project are:
 * `imager_profiles/tests.py`
 * `imager_api/tests.py`
 
-### Built With
+### Development Tools
 ---
 * Django
 * Postgres

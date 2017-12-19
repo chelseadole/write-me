@@ -3,14 +3,11 @@
 
 """Tests for scaffold of README generator."""
 
-import pytest
 from readme_generator.make_scaffold import main
-import os
-import sys
 
-text_readme = open("README.md")
-import pdb; pdb.set_trace()
-text_readme = text_readme.read()
+
+with open('README.md', 'r') as readme:
+    text_readme = readme.read()
 
 
 def test_main_fn_returns_test_response():
@@ -37,5 +34,3 @@ def test_readme_does_not_have_serving_info_with_settings():
     """README does not include serving or urls when has_web_framework is false."""
     main()
     assert "Serving Locally" not in text_readme
-
-os.close(text_readme)
