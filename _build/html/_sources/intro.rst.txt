@@ -7,5 +7,5 @@ Writeme is a PyPI package that searches through a user's codebase, and uses file
 
 This package was written as a project by students at Code Fellows, Seattle in December 2017.
 
-To view the codebase or contribute, see project repo on `Github <http://www.github.com/chelseadole/>`_
+Project Repository: `WRITEME Github <http://www.github.com/chelseadole/write-me>`_
 

@@ -16,8 +16,9 @@ Contents:
    intro
    installation
    tutorial
-   code
    userguide
+   examples
+
 
 
 Indices and tables
