@@ -36,12 +36,12 @@ def test_pip_files_list():
 
 def test_url_dot_py_in_url_files():
     """Test url.py in url files."""
-    assert './src/urls.py' in URL_FILES
+    assert './write_me/urls.py' in URL_FILES
 
 
 def test_routes_dot_py_in_url_files():
     """Test routes.py in url files."""
-    assert './src/routes.py' in URL_FILES
+    assert './write_me/routes.py' in URL_FILES
 
 
 def test_setup_in_setup_files():
