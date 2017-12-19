@@ -4,12 +4,13 @@ import os
 import shutil
 import argparse
 
-from .scaffold_options import test_options, serving_options, built_with_opts
+from write_me.tsting_info import get_docstrings
+# from .scaffold_options import test_options, serving_options, built_with_opts
 
 # os.system('rm README.md')
 # os.system('touch README.md')
 
-has_web_framework = False
+has_web_framework = True
 
 parser = argparse.ArgumentParser()  # pragma: no cover
 parser.add_argument('-v', '--verbose',
@@ -31,7 +32,7 @@ def overwrite(answer=None):
     """Check if user wants to overwrite existing README.md."""
     prompt_txt = """
     Do you want to overwrite your present README file?
-    Don't worry, if you overwrite your present README it will be backup to README.md.old
+    Don't worry, if you overwrite your present README it will be backed up to README.md.old
     Yes or no?
     """
     poss_answers = ['n', 'no', 'y', 'yes']
@@ -118,13 +119,16 @@ def main():
         w.writeline()
         w.writeline('`$ pytest --cov`')
 
+        test_dict = get_docstrings()
         w.write_heading(mg.emphasis('Test Files'), 5)
         w.writeline('The testing files for this project are:')
-        test_files = mg.List()
-        test_files.append('`imager_images/tests.py`')
-        test_files.append('`imager_profiles/tests.py`')
-        test_files.append('`imager_api/tests.py`')
-        w.write(test_files)
+        w.writeline()
+        test_table = mg.Table()
+        test_table.add_column('File Name', mg.Alignment.CENTER)
+        test_table.add_column('Description', mg.Alignment.CENTER)
+        for key, val in test_dict.items():
+            test_table.append('`{}`'.format(key), val)
+        w.write(test_table)
 
         if has_web_framework:
             # URLS - table
@@ -170,3 +174,4 @@ def main():
 
         w.writeline(mg.emphasis('This README was generated using ' + mg.link('https://github.com/chelseadole/write-me', 'writeme.')))
     return "README generated."
+main()

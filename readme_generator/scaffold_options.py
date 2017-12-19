@@ -36,6 +36,11 @@ serving_options = {
         "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `run.py`.",
         "serve_command": "`$ flask run`",
         "hosting": "Once you have executed this command open your brower, and go to `locahost:5000/`."
+    },
+    "tornado": {
+        "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this cmmand at the same level of your tornado server, `myserver.py`.",
+        "serve_command": '`python -m tornado.autoreload myserver.py`',
+        "hosting": "Once you have executed this command, open your brower, and go to `localhost:8888/`."
     }
 }
 

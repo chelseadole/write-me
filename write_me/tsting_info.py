@@ -1,6 +1,6 @@
 """Get docstring from test_files."""
 
-from list_files import get_test_files
+from write_me.list_files import get_test_files
 
 test_info = {}
 
@@ -27,6 +27,8 @@ def get_docstrings():
                         continue
             else:
                 docstring.append("")
-
         test_info[test_file] = "".join(docstring)
     return test_info
+
+if __name__ == '__main__':
+    get_docstrings()

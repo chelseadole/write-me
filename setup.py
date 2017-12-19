@@ -1,12 +1,14 @@
 """Setup script for write-me Python package."""
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 setup(
     name='write_me',
-    packages=['readme_generator'],
+    # package_dir={'': 'write_me', 'readme_generator': 'readme_generator'},
+    # py_modules=['readme_generator', 'write_me'],
+    packages=find_packages(),
     entry_points={
-        'console_scripts': ['genreadme = readme_generator.make_scaffold:main'],
+        'console_scripts': ['genreadme=readme_generator.make_scaffold:main'],
     },
     version='0.3',
     description='Python package to assist developers with constructing README as project evolves.',
