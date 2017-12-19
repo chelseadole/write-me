@@ -27,7 +27,6 @@ def get_docstrings():
                         continue
             else:
                 docstring.append("")
-
         test_info[test_file] = "".join(docstring)
     return test_info
 
