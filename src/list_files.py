@@ -33,6 +33,12 @@ def repo_fs():
     parse_files()
 
 
+def get_test_files():
+    """."""
+    repo_fs()
+    return TEST_FILES
+
+
 def parse_files():
     """Parse all the files."""
     if PY_FILES:
