@@ -7,7 +7,7 @@ from scaffold_options import test_options, serving_options, built_with_opts
 os.system('rm README.md')
 os.system('touch README.md')
 
-has_web_framework = True
+has_web_framework = False
 
 if __name__ == '__main__':
     with open('README.md', 'w') as f:
@@ -98,7 +98,7 @@ if __name__ == '__main__':
             w.write(urls_table)
 
         # TOOLS
-        w.write_heading('Built With', 3)
+        w.write_heading('Development Tools', 3)
         w.write_hrule()
         tools_list = mg.List()
         tools_list.append('Django')
