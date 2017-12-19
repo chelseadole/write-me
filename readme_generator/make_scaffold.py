@@ -15,7 +15,7 @@ def overwrite():
     """Check if user wants to overwrite existing README.md."""
     prompt_txt = """
     Do you want to overwrite your present README file?
-    Don't worry, if you overwrite your present README it will be backup to README.md.old
+    Don't worry, if you overwrite your present README it will be backed up to README.md.old
     Yes or no?
     """
     poss_answers = ['n', 'no', 'y', 'yes']
