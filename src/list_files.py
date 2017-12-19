@@ -15,7 +15,7 @@ SETUP_FILES = []
 def repo_fs():
     """File listing of current repo broken up into lists."""
     for root, dirs, files in os.walk("."):
-        dirs[:] = [d for d in dirs if '.' not in d and 'ENV' not in d and '__' not in d]
+        dirs[:] = [d for d in dirs if '.' not in d and 'ENV' not in d and '__' not in d and 'build' not in d]
         for f in files:
             if f.endswith(".py"):
                 if not f.startswith('__'):
@@ -41,21 +41,25 @@ def get_test_files():
 
 def parse_files():
     """Parse all the files."""
-    if PY_FILES:
-        parse_setup_files()
-        if PY_FILES:
-            parse_settings_files()
-            if PY_FILES:
-                parse_test_files()
-                if PY_FILES:
-                    parse_url_files()
-                    if PY_FILES:
-                        parse_route_files()
+    pfuncs = [parse_setup_files,
+              parse_route_files,
+              parse_settings_files,
+              parse_test_files,
+              parse_url_files,
+              ]
+
+    while PY_FILES:
+        for _ in range(len(pfuncs)):
+            a_func = pfuncs.pop()
+            # import pdb; pdb.set_trace()
+            a_func()
+        break
 
 
 def parse_setup_files():
     """Remove setup files into seperate lists."""
-    for f in PY_FILES:
+    a_copy = PY_FILES[::]
+    for f in a_copy:
         if 'setup' in f:
             SETUP_FILES.append(f)
             PY_FILES.remove(f)
@@ -63,7 +67,8 @@ def parse_setup_files():
 
 def parse_settings_files():
     """Remove settings files into seperate lists."""
-    for f in PY_FILES:
+    a_copy = PY_FILES[::]
+    for f in a_copy:
         if 'settings' in f:
             SETUP_FILES.append(f)
             PY_FILES.remove(f)
@@ -71,15 +76,18 @@ def parse_settings_files():
 
 def parse_test_files():
     """Remove test files into seperate list."""
-    for f in PY_FILES:
+    a_copy = PY_FILES[::]
+    for f in a_copy:
         if 'test' in f:
+            # import pdb; pdb.set_trace()
             TEST_FILES.append(f)
             PY_FILES.remove(f)
 
 
 def parse_url_files():
     """Remove url files into seperate lists."""
-    for f in PY_FILES:
+    a_copy = PY_FILES[::]
+    for f in a_copy:
         if 'urls' in f:
             URL_FILES.append(f)
             PY_FILES.remove(f)
@@ -87,7 +95,8 @@ def parse_url_files():
 
 def parse_route_files():
     """Remove route files into seperate lists."""
-    for f in PY_FILES:
+    a_copy = PY_FILES[::]
+    for f in a_copy:
         if 'routes' in f:
             URL_FILES.append(f)
             PY_FILES.remove(f)
@@ -95,14 +104,13 @@ def parse_route_files():
 
 if __name__ == '__main__':  # pragma no cover
     repo_fs()
-    print('.py files:\n', PY_FILES,
-          '\n.yml files:\n', YML_FILES,
-          '\nrequirements:\n', PIP_FILES,
+    print('.PY FILES:\n', PY_FILES,
+          '\n.YML FILES:\n', YML_FILES,
+          '\nREQUIREMENTS:\n', PIP_FILES,
           '\nREADME.md files:\n', README_FILES,
-          '\ntest files:\n', TEST_FILES,
+          '\nTEST FILES:\n', TEST_FILES,
           '\nLICENSE:\n', LICENSE,
           '\nURL_FILES:\n', URL_FILES,
           '\nCONTRIBUTIONS:\n', CONTRIBUTIONS,
-          '\nCONTRIBUTIONS:\n', CONTRIBUTIONS,
-          '\nsetup_files:\n', SETUP_FILES,
+          '\nSETUP_FILES:\n', SETUP_FILES,
           )
