@@ -4,10 +4,10 @@ import os
 
 from readme_generator.scaffold_options import test_options, serving_options, built_with_opts
 
-os.system('rm README.md')
-os.system('touch README.md')
+# os.system('rm README.md')
+# os.system('touch README.md')
 
-has_web_framework = True
+has_web_framework = False
 
 
 def main():
