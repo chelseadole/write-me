@@ -23,14 +23,19 @@ test_options = {
 
 serving_options = {
     "django": {
-        "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`:",
+        "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`.",
         "serve_command": "`$ ./manage.py runserver`",
         "hosting": "Once you have executed this command, open your browser, and go to `localhost:8000/`."
     },
     "pyramid": {
         "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command at the root level of your application, at the same level as `development.ini` and `production.ini`.",
         "serve_command": "`$ pserve development.ini`",
-        "hosting": "Once you have executed this command, open your browser, and go to `localhost:6543/ `."
+        "hosting": "Once you have executed this command, open your browser, and go to `localhost:6543/`."
+    },
+    "flask": {
+        "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `run.py`.",
+        "serve_command": "`$ flask run`",
+        "hosting": "Once you have executed this command open your brower, and go to `locahost:5000/`."
     }
 }
 
