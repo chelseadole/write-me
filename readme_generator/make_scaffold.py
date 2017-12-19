@@ -17,25 +17,19 @@ def overwrite():
     """
 
     answer = input(prompt_txt).lower()
-    print("ANSWER", answer)
     if answer == 'yes' or answer == 'y' or answer == '':
         if os.path.isfile('README.md'):
             shutil.move('README.md', 'README.md.old')
-            print("IN YES")
         return 'README.md'
     elif answer == 'no' or answer == 'n':
-        print("IN NO")
         return 'README.md.new'
     else:
-        print("IN ELSE")
-        print("Please choose yes or no")
         return overwrite()
 
 
 def main():
     """Create README."""
     readme = overwrite()
-    print("README", readme)
 
     with open('README.md', 'w') as f:
         w = mg.Writer(f)
