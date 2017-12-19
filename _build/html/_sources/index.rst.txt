@@ -8,9 +8,10 @@ Welcome to writeme's documentation!
 
 Writeme generates concise, effective, and specific READMEs based on your codebase.
 
+Contents:
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
    intro
    installation
