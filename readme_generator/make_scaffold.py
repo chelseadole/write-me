@@ -11,7 +11,7 @@ from .scaffold_options import test_options, serving_options, built_with_opts
 
 has_web_framework = False
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser()  # pragma: no cover
 parser.add_argument('-v', '--verbose',
                     help='create verbose readme',
                     action='store_true')
