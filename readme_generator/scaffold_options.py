@@ -31,6 +31,11 @@ serving_options = {
         "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command at the root level of your application, at the same level as `development.ini` and `production.ini`.",
         "serve_command": "`$ pserve development.ini`",
         "hosting": "Once you have executed this command, open your browser, and go to `localhost:6543/ `."
+    },
+    "flask": {
+        "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this cmmand at the same level of your `app.py`.",
+        "serve_command": "`$ python app.py`",
+        "hosting": "Once you have executed this command, open your brower, and go to `localhost:5000`."
     }
 }
 
