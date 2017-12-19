@@ -1,6 +1,10 @@
 """Test file for ensure scaffolding functionality."""
 import os
 
+import shutil
+
+import tempfile
+
 from unittest import TestCase
 
 from unittest.mock import patch
@@ -15,27 +19,41 @@ class TestScaffold(TestCase):
 
     def test_overwrite_input_no(self):
         """Test overwrite function if no entered."""
-        with patch('builtins.input', side_effect=['n', 'no']):
-            assert overwrite() == 'README.md.new'
+        with tempfile.TemporaryDirectory() as test_dir:
+            os.chdir(test_dir)
+            f = tempfile.NamedTemporaryFile()
+            f.name = 'README.md'
+            with patch('builtins.input', side_effect=['n', 'no']):
+                assert overwrite() == 'README.md.new'
 
     def test_overwrite_input_yes(self):
         """Test overwrite function if yes entered."""
-        with patch('builtins.input', side_effect=['y', 'yes']):
-            assert overwrite() == 'README.md'
+        with tempfile.TemporaryDirectory() as test_dir:
+            os.chdir(test_dir)
+            f = tempfile.NamedTemporaryFile()
+            f.name = 'README.md'
+            with patch('builtins.input', side_effect=['y', 'yes']):
+                assert overwrite() == 'README.md'
 
     def test_main_returns_succcess_text(self):
         """Test success test returned when main is called."""
-        with patch('builtins.input', return_value='y'):
-            assert main() == 'README generated.'
+        with tempfile.TemporaryDirectory() as test_dir:
+            os.chdir(test_dir)
+            f = tempfile.NamedTemporaryFile()
+            f.name = 'README.md'
+            with patch('builtins.input', return_value='y'):
+                assert main() == 'README generated.'
 
+    def test_overwrite_user_prompt():
+        """Test overwrite prompts user with yes/no question."""
+        with tempfile.TemporaryDirectory() as test_dir:
+            os.chdir(test_dir)
+            f = tempfile.NamedTemporaryFile()
+            f.name = 'README.md'
+            assert overwrite('n') == 'README.md.new'
 
 # with open('README.md', 'r') as readme:
 #   text_readme = readme.read()
-
-
-# def test_main_fn_returns_test_response():
-#     """Test main() fn, when called, returns testing confirmation."""
-#     assert main() == "README generated."
 
 
 # def test_generated_readme_has_proj_name():
