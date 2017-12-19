@@ -27,7 +27,7 @@ parser.add_argument('-f', '--flask',
 args = parser.parse_args()
 
 
-def overwrite():
+def overwrite(answer=None):
     """Check if user wants to overwrite existing README.md."""
     prompt_txt = """
     Do you want to overwrite your present README file?
@@ -36,9 +36,10 @@ def overwrite():
     """
     poss_answers = ['n', 'no', 'y', 'yes']
 
-    answer = input(prompt_txt).lower()
-    while answer not in poss_answers:
+    if not answer:
         answer = input(prompt_txt).lower()
+        while answer not in poss_answers:
+            answer = input(prompt_txt).lower()
 
     if answer == 'yes' or answer == 'y':
         if os.path.isfile('README.md'):

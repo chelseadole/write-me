@@ -11,7 +11,6 @@ def test_readme_files_list():
     """Test found README.md files."""
     assert 'README.md' in README_FILES[0]
 
-
 def test_py_files_list():
     """Test found .py files."""
     assert './readme_generator/test_scaffold.py' in TEST_FILES
