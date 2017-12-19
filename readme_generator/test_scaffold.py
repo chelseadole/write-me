@@ -25,5 +25,5 @@ class TestScaffold(TestCase):
 
     def test_main_returns_succcess_text(self):
         """Test success test returned when main is called."""
-        with patch('builtins.input', side_effect='y'):
+        with patch('builtins.input', return_value='y'):
             assert main() == 'README generated.'

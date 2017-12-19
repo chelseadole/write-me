@@ -14,7 +14,7 @@ def test_readme_files_list():
 
 def test_py_files_list():
     """Test found .py files."""
-    assert './src/test/test_class.py' in TEST_FILES
+    assert './readme_generator/test_scaffold.py' in TEST_FILES
 
 
 def test_py_files_list_only_py():
