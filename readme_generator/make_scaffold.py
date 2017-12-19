@@ -9,7 +9,9 @@ os.system('touch README.md')
 
 has_web_framework = False
 
-if __name__ == '__main__':
+
+def main():
+    """Create README."""
     with open('README.md', 'w') as f:
         w = mg.Writer(f)
         w.write_heading('Project Title', 1)
@@ -126,3 +128,4 @@ if __name__ == '__main__':
         w.write(shoutouts)
 
         w.writeline(mg.emphasis('This README was generated using ' + mg.link('https://github.com/chelseadole/write-me', 'writeme.')))
+    return "I happened"
