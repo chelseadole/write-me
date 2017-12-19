@@ -101,6 +101,7 @@ def main():
         w.writeline()
         w.writeline('`$ pytest --cov`')
 
+        # if -v "verbose" tag: make this a table
         w.write_heading(mg.emphasis('Test Files'), 5)
         w.writeline('The testing files for this project are:')
         test_files = mg.List()
