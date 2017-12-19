@@ -9,6 +9,7 @@ TEST_FILES = []
 LICENSE = []
 URL_FILES = []
 CONTRIBUTIONS = []
+SETUP_FILES = []
 
 
 def repo_fs():
@@ -29,13 +30,37 @@ def repo_fs():
                 LICENSE.append(os.path.join(root, f))
             if f.startswith("CONTRIBUTIONS"):
                 CONTRIBUTIONS.append(os.path.join(root, f))
+    parse_files()
 
+
+def parse_files():
+    """Parse all the files."""
     if PY_FILES:
-        parse_test_files()
+        parse_setup_files()
         if PY_FILES:
-            parse_url_files()
+            parse_settings_files()
             if PY_FILES:
-                parse_route_files()
+                parse_test_files()
+                if PY_FILES:
+                    parse_url_files()
+                    if PY_FILES:
+                        parse_route_files()
+
+
+def parse_setup_files():
+    """Remove setup files into seperate lists."""
+    for f in PY_FILES:
+        if 'setup' in f:
+            SETUP_FILES.append(f)
+            PY_FILES.remove(f)
+
+
+def parse_settings_files():
+    """Remove settings files into seperate lists."""
+    for f in PY_FILES:
+        if 'settings' in f:
+            SETUP_FILES.append(f)
+            PY_FILES.remove(f)
 
 
 def parse_test_files():
@@ -72,4 +97,6 @@ if __name__ == '__main__':  # pragma no cover
           '\nLICENSE:\n', LICENSE,
           '\nURL_FILES:\n', URL_FILES,
           '\nCONTRIBUTIONS:\n', CONTRIBUTIONS,
+          '\nCONTRIBUTIONS:\n', CONTRIBUTIONS,
+          '\nsetup_files:\n', SETUP_FILES,
           )
