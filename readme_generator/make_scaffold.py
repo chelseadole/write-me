@@ -1,18 +1,37 @@
 """Module to create README.md file with basic scaffold, using markdown_generator."""
 import markdown_generator as mg
 import os
+import shutil
 
-from scaffold_options import test_options, serving_options, built_with_opts
-
-os.system('rm README.md')
-os.system('touch README.md')
+from .scaffold_options import test_options, serving_options, built_with_opts
 
 has_web_framework = False
 
 
+def overwrite():
+    """Check if user wants to overwrite existing README.md."""
+    prompt_txt = """
+    Do you want to overwrite your present README file?
+    Don't worry, if you overwrite your present README it will be backup to README.md.old
+    Yes or no?
+    """
+
+    answer = input(prompt_txt).lower()
+    if answer == 'yes' or answer == 'y' or answer == '':
+        if os.path.isfile('README.md'):
+            shutil.move('README.md', 'README.md.old')
+        return 'README.md'
+    elif answer == 'no' or answer == 'n':
+        return 'README.md.new'
+    else:
+        return overwrite()
+
+
 def main():
     """Create README."""
-    with open('README.md', 'w') as f:
+    readme = overwrite()
+
+    with open(readme, 'w') as f:
         w = mg.Writer(f)
         w.write_heading('Project Title', 1)
         w.write_hrule()
