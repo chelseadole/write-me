@@ -1,10 +1,10 @@
 """Test for files listed."""
 
-import pytest
-from list_files import (repo_fs, PY_FILES, YML_FILES,
-                        PIP_FILES, README_FILES, TEST_FILES,
-                        URL_FILES)
+from list_files import (LICENSE, PIP_FILES, PY_FILES,
+                        README_FILES, SETUP_FILES, TEST_FILES,
+                        URL_FILES, YML_FILES, repo_fs)
 
+import pytest
 
 repo_fs()
 
@@ -42,6 +42,16 @@ def test_url_dot_py_in_url_files():
 def test_routes_dot_py_in_url_files():
     """Test routes.py in url files."""
     assert './src/routes.py' in URL_FILES
+
+
+def test_setup_in_setup_files():
+    """Test setup.py in url files."""
+    assert './setup.py' in SETUP_FILES
+
+
+def test_license_in_license_list():
+    """Test license in license list."""
+    assert './LICENSE' in LICENSE
 
 
 @pytest.mark.parametrize('item', [item for item in PY_FILES])
