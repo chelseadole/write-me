@@ -7,7 +7,7 @@ from scaffold_options import test_options, serving_options, built_with_opts
 os.system('rm README.md')
 os.system('touch README.md')
 
-has_web_framework = False
+has_web_framework = True
 
 
 def main():
@@ -128,4 +128,4 @@ def main():
         w.write(shoutouts)
 
         w.writeline(mg.emphasis('This README was generated using ' + mg.link('https://github.com/chelseadole/write-me', 'writeme.')))
-    return "I happened"
+    return "README generated."
