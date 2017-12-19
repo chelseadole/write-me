@@ -9,12 +9,12 @@ repo_fs()
 
 def test_readme_files_list():
     """Test found README.md files."""
-    assert './README.md' in README_FILES
+    assert './readme_generator/README.md' in README_FILES
 
 
 def test_py_files_list():
     """Test found .py files."""
-    assert './src/test_list_files.py' in TEST_FILES
+    assert './src/test/test_class.py' in TEST_FILES
 
 
 def test_py_files_list_only_py():
