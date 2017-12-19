@@ -10,6 +10,7 @@ LICENSE = []
 URL_FILES = []
 CONTRIBUTIONS = []
 SETUP_FILES = []
+MODEL_FILES = []
 
 
 def repo_fs():
@@ -46,14 +47,23 @@ def parse_files():
               parse_settings_files,
               parse_test_files,
               parse_url_files,
+              parse_model_files,
               ]
 
     while PY_FILES:
         for _ in range(len(pfuncs)):
             a_func = pfuncs.pop()
-            # import pdb; pdb.set_trace()
             a_func()
         break
+
+
+def parse_model_files():
+    """Remove model files into seperate lists."""
+    a_copy = PY_FILES[::]
+    for f in a_copy:
+        if 'model' in f:
+            MODEL_FILES.append(f)
+            PY_FILES.remove(f)
 
 
 def parse_setup_files():
@@ -113,4 +123,5 @@ if __name__ == '__main__':  # pragma no cover
           '\nURL_FILES:\n', URL_FILES,
           '\nCONTRIBUTIONS:\n', CONTRIBUTIONS,
           '\nSETUP_FILES:\n', SETUP_FILES,
+          '\nMODEL_FILES:\n', MODEL_FILES,
           )
