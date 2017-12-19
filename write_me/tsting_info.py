@@ -1,6 +1,6 @@
 """Get docstring from test_files."""
 
-from list_files import get_test_files
+from write_me.list_files import get_test_files
 
 test_info = {}
 
@@ -14,14 +14,12 @@ def get_docstrings():
         with open(test_file, 'r') as tf:
             lines = tf.readlines()
             if lines[0].startswith('"""'):
-                # import pdb; pdb.set_trace()
                 if lines[0].endswith('"""\n'):
                     stripped = lines[0].strip()
                     docstring.append(stripped.strip('"""'))
                     test_info[test_file] = "".join(docstring)
                     continue
                 for line in lines:
-                    # import pdb; pdb.set_trace()
                     stripped = line.strip()
                     docstring.append(stripped.strip('"""'))
                     if line.endswith('"""\n'):
@@ -32,3 +30,6 @@ def get_docstrings():
 
         test_info[test_file] = "".join(docstring)
     return test_info
+
+if __name__ == '__main__':
+    get_docstrings()

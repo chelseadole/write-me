@@ -4,9 +4,11 @@ import os
 import shutil
 import argparse
 
+from write_me.tsting_info import get_docstrings
 # from .scaffold_options import test_options, serving_options, built_with_opts
+import pdb; pdb.set_trace()
 
-os.system('rm README.md')
+# os.system('rm README.md')
 os.system('touch README.md')
 
 has_web_framework = True
@@ -119,13 +121,18 @@ def main():
         w.writeline('`$ pytest --cov`')
 
         # if -v "verbose" tag: make this a table
+        test_dict = get_docstrings()
         w.write_heading(mg.emphasis('Test Files'), 5)
         w.writeline('The testing files for this project are:')
-        test_files = mg.List()
-        test_files.append('`imager_images/tests.py`')
-        test_files.append('`imager_profiles/tests.py`')
-        test_files.append('`imager_api/tests.py`')
-        w.write(test_files)
+        test_table = mg.Table()
+        test_table.add_column('File Name', mg.Alignment.CENTER)
+        test_table.add_column('Description', mg.Alignment.CENTER)
+        for key, val in test_dict.keys():
+            test_table.append(key, val)
+        # test_files.append('`imager_images/tests.py`')
+        # test_files.append('`imager_profiles/tests.py`')
+        # test_files.append('`imager_api/tests.py`')
+        w.write(test_table)
 
         if has_web_framework:
             # URLS - table
@@ -171,3 +178,4 @@ def main():
 
         w.writeline(mg.emphasis('This README was generated using ' + mg.link('https://github.com/chelseadole/write-me', 'writeme.')))
     return "README generated."
+main()

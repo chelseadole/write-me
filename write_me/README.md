@@ -45,3 +45,36 @@ To view test coverage, run:
 `$ pytest --cov`
 ##### *Test Files*
 The testing files for this project are:
+* `imager_images/tests.py`
+* `imager_profiles/tests.py`
+* `imager_api/tests.py`
+
+### URLs
+---
+The URLs for this project are:
+
+| URL | Description |
+|:---:|:---:|
+| `/images` | Library of all images |
+| `/images/edit` | Edit view for a single image |
+| `/images/add` | Add form for a new image |
+
+### Development Tools
+---
+* Django
+* Postgres
+* Python
+* MongoDB
+
+### Contributions
+---
+If you wish to contribute to this project, please contact NAME1 or NAME2.
+### License
+---
+This project is licensed under the MIT License - see the LICENSE.md file for details.
+### Acknowledgements
+---
+* Nicholas Hunt-Walker
+* Coffee
+
+*This README was generated using [writeme.](https://github.com/chelseadole/write-me)*
