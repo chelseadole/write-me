@@ -3,7 +3,7 @@ import markdown_generator as mg
 import os
 import shutil
 
-from scaffold_options import test_options, serving_options, built_with_opts
+from .scaffold_options import test_options, serving_options, built_with_opts
 
 has_web_framework = False
 
@@ -31,7 +31,7 @@ def main():
     """Create README."""
     readme = overwrite()
 
-    with open('README.md', 'w') as f:
+    with open(readme, 'w') as f:
         w = mg.Writer(f)
         w.write_heading('Project Title', 1)
         w.write_hrule()
