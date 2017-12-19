@@ -23,7 +23,7 @@ test_options = {
 
 serving_options = {
     "django": {
-        "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`:",
+        "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`.",
         "serve_command": "`$ ./manage.py runserver`",
         "hosting": "Once you have executed this command, open your browser, and go to `localhost:8000/`."
     },
@@ -33,9 +33,9 @@ serving_options = {
         "hosting": "Once you have executed this command, open your browser, and go to `localhost:6543/`."
     },
     "flask": {
-        "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this cmmand at the same level of your `app.py`.",
-        "serve_command": "`$ python app.py`",
-        "hosting": "Once you have executed this command, open your brower, and go to `localhost:5000/`."
+        "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `run.py`.",
+        "serve_command": "`$ flask run`",
+        "hosting": "Once you have executed this command open your brower, and go to `locahost:5000/`."
     },
     "tornado": {
         "instructions": "Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this cmmand at the same level of your tornado server, `myserver.py`.",
