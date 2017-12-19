@@ -29,6 +29,10 @@ Now now that you have cloned your repo and changed directories into the project,
 `$ python3 -m venv ENV`
 `$ source ENV/bin/activate`
 `$ pip install -r requirements.txt`
+##### *Serving Locally*
+Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`:
+`$ ./manage.py runserver`
+Once you have executed this command, open your browser, and go to `localhost:8000/`.
 ### Test Suite
 ---
 ##### *Running Tests*
@@ -45,7 +49,17 @@ The testing files for this project are:
 * `imager_profiles/tests.py`
 * `imager_api/tests.py`
 
-### Built With
+### URLs
+---
+The URLs for this project are:
+
+| URL | Description |
+|:---:|:---:|
+| `/images` | Library of all images |
+| `/images/edit` | Edit view for a single image |
+| `/images/add` | Add form for a new image |
+
+### Development Tools
 ---
 * Django
 * Postgres

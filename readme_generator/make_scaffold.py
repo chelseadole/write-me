@@ -2,7 +2,7 @@
 import markdown_generator as mg
 import os
 
-from scaffold_options import test_options, serving_options, built_with_opts
+from readme_generator.scaffold_options import test_options, serving_options, built_with_opts
 
 os.system('rm README.md')
 os.system('touch README.md')
