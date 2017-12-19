@@ -2,6 +2,7 @@
 import markdown_generator as mg
 import os
 import shutil
+import argparse
 
 from .scaffold_options import test_options, serving_options, built_with_opts
 
@@ -9,6 +10,21 @@ from .scaffold_options import test_options, serving_options, built_with_opts
 # os.system('touch README.md')
 
 has_web_framework = False
+
+parser = argparse.ArgumentParser()  # pragma: no cover
+parser.add_argument('-v', '--verbose',
+                    help='create verbose readme',
+                    action='store_true')
+parser.add_argument('-d', '--django',
+                    help='Django readme scaffolding',
+                    action='store_true')
+parser.add_argument('-p', '--pyramid',
+                    help='Pyramid readme scaffolding',
+                    action='store_true')
+parser.add_argument('-f', '--flask',
+                    help='Flask readme scaffolding',
+                    action='store_true')
+args = parser.parse_args()
 
 
 def overwrite(answer=None):
