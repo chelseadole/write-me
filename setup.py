@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='write_me',
-    packages=['write_me'],
+    packages=['readme_generator'],
     entry_points={
         'console_scripts': ['genreadme = readme_generator.make_scaffold:main'],
     },
