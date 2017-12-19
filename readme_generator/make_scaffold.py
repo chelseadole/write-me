@@ -3,12 +3,12 @@ import markdown_generator as mg
 import os
 import shutil
 
-from .scaffold_options import test_options, serving_options, built_with_opts
+# from .scaffold_options import test_options, serving_options, built_with_opts
 
-# os.system('rm README.md')
-# os.system('touch README.md')
+os.system('rm README.md')
+os.system('touch README.md')
 
-has_web_framework = False
+has_web_framework = True
 
 
 def overwrite():
