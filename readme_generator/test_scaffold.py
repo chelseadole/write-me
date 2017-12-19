@@ -1,13 +1,36 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+"""Test file for ensure scaffolding functionality."""
+import os
 
-"""Tests for scaffold of README generator."""
+from unittest import TestCase
 
-from readme_generator.make_scaffold import main
+from unittest.mock import patch
+
+import pytest
+
+from .make_scaffold import main, overwrite
 
 
-with open('README.md', 'r') as readme:
-    text_readme = readme.read()
+class TestScaffold(TestCase):
+    """Scaffold class for testing inputs and file creation."""
+
+    def test_overwrite_input_no(self):
+        """Test overwrite function if no entered."""
+        with patch('builtins.input', side_effect=['n', 'no']):
+            assert overwrite() == 'README.md.new'
+
+    def test_overwrite_input_yes(self):
+        """Test overwrite function if yes entered."""
+        with patch('builtins.input', side_effect=['y', 'yes']):
+            assert overwrite() == 'README.md'
+
+    def test_main_returns_succcess_text(self):
+        """Test success test returned when main is called."""
+        with patch('builtins.input', return_value='y'):
+            assert main() == 'README generated.'
+
+
+# with open('README.md', 'r') as readme:
+#   text_readme = readme.read()
 
 
 # def test_main_fn_returns_test_response():

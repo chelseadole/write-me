@@ -18,16 +18,18 @@ def overwrite():
     Don't worry, if you overwrite your present README it will be backup to README.md.old
     Yes or no?
     """
+    poss_answers = ['n', 'no', 'y', 'yes']
 
     answer = input(prompt_txt).lower()
-    if answer == 'yes' or answer == 'y' or answer == '':
+    while answer not in poss_answers:
+        answer = input(prompt_txt).lower()
+
+    if answer == 'yes' or answer == 'y':
         if os.path.isfile('README.md'):
             shutil.move('README.md', 'README.md.old')
         return 'README.md'
     elif answer == 'no' or answer == 'n':
         return 'README.md.new'
-    else:
-        return overwrite()
 
 
 def main():
