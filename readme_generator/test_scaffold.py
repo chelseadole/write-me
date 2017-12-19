@@ -44,7 +44,7 @@ class TestScaffold(TestCase):
             with patch('builtins.input', return_value='y'):
                 assert main() == 'README generated.'
 
-    def test_overwrite_user_prompt():
+    def test_overwrite_user_prompt(self):
         """Test overwrite prompts user with yes/no question."""
         with tempfile.TemporaryDirectory() as test_dir:
             os.chdir(test_dir)
