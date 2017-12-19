@@ -1,6 +1,6 @@
 """Test for files listed."""
 
-from list_files import (LICENSE, PIP_FILES, PY_FILES,
+from write_me.list_files import (LICENSE, PIP_FILES, PY_FILES,
                         README_FILES, SETUP_FILES, TEST_FILES,
                         URL_FILES, YML_FILES, repo_fs)
 

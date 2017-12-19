@@ -2,7 +2,7 @@
 
 import pytest
 
-from tsting_info import get_docstrings
+from write_me.tsting_info import get_docstrings
 
 
 tfd = get_docstrings()
