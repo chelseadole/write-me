@@ -35,6 +35,10 @@ Now now that you have cloned your repo and changed directories into the project,
 `$ python3 -m venv ENV`
 `$ source ENV/bin/activate`
 `$ pip install -r requirements.txt`
+##### *Serving Locally*
+Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `run.py`.
+`$ flask run`
+Once you have executed this command open your browser, and go to `locahost:5000/`.
 ### Test Suite
 ---
 ##### *Running Tests*
