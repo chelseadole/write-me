@@ -68,6 +68,18 @@ def get_setup_file():
     return SETUP_FILES
 
 
+def get_requirements():
+    """."""
+    repo_fs()
+    return PIP_FILES
+
+
+def get_py_files():
+    """."""
+    repo_fs()
+    return PY_FILES
+
+
 def parse_files():
     """Parse all the files."""
     pfuncs = [  # parse py files : add #
