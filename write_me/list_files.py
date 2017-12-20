@@ -70,6 +70,12 @@ def get_test_files():
     return TEST_FILES
 
 
+def get_license():
+    """Return license file path."""
+    repo_fs()
+    return LICENSE
+
+
 def get_setup_file():
     """Return list of all setup.py files in project."""
     repo_fs()
