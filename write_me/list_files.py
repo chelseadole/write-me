@@ -57,9 +57,15 @@ def repo_fs():
 
 
 def get_test_files():
-    """."""
+    """Return list of all test files in project."""
     repo_fs()
     return TEST_FILES
+
+
+def get_setup_file():
+    """Return list of all setup.py files in project."""
+    repo_fs()
+    return SETUP_FILES
 
 
 def parse_files():
