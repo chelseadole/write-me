@@ -16,7 +16,12 @@ MODEL_FILES = []
 def repo_fs():
     """File listing of current repo broken up into lists."""
     for root, dirs, files in os.walk("."):
-        dirs[:] = [d for d in dirs if '.' not in d and 'ENV' not in d and '__' not in d and 'build' not in d]
+        dirs[:] = [d for d in dirs  # add any extra dirs to ignore #
+                   if '.' not in d
+                   and 'ENV' not in d
+                   and '__' not in d
+                   and 'build' not in d]
+
         for f in files:
             if f.endswith(".py"):
                 if not f.startswith('__'):
@@ -31,7 +36,22 @@ def repo_fs():
                 LICENSE.append(os.path.join(root, f))
             if f.startswith("CONTRIBUTIONS"):
                 CONTRIBUTIONS.append(os.path.join(root, f))
-    parse_files()
+
+    if PY_FILES:
+        parse_files()
+
+    return {  # dictionary with all lists of file path/names #
+            'PY_FILES': PY_FILES,
+            'YML_FILES': YML_FILES,
+            'PIP_FILES': PIP_FILES,
+            'README_FILES': README_FILES,
+            'TEST_FILES': TEST_FILES,
+            'LICENSE': LICENSE,
+            'URL_FILES': URL_FILES,
+            'CONTRIBUTIONS': CONTRIBUTIONS,
+            'SETUP_FILES': SETUP_FILES,
+            'MODEL_FILES': MODEL_FILES,
+            }
 
 
 def get_test_files():
@@ -75,23 +95,23 @@ def parse_setup_files():
             SETUP_FILES.append(f)
             PY_FILES.remove(f)
 
+#
+# def parse_settings_files():
+#     """Remove settings files into seperate lists."""
+#     a_copy = PY_FILES[::]
+#     for f in a_copy:
+#         if 'settings' in f:
+#             SETUP_FILES.append(f)
+#             PY_FILES.remove(f)
 
-def parse_settings_files():
-    """Remove settings files into seperate lists."""
-    a_copy = PY_FILES[::]
-    for f in a_copy:
-        if 'settings' in f:
-            SETUP_FILES.append(f)
-            PY_FILES.remove(f)
 
-
-def parse_config_files():
-    """Remove config for flask apps."""
-    a_copy = PY_FILES[::]
-    for f in a_copy:
-        if 'conf' in f:
-            SETUP_FILES.append(f)
-            PY_FILES.remove(f)
+# def parse_config_files():
+#     """Remove config for flask apps."""
+#     a_copy = PY_FILES[::]
+#     for f in a_copy:
+#         if 'conf' in f:
+#             SETUP_FILES.append(f)
+#             PY_FILES.remove(f)
 
 
 def parse_test_files():
