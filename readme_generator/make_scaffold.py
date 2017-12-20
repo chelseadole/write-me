@@ -5,7 +5,8 @@ import shutil
 import argparse
 
 from write_me.tsting_info import get_docstrings
-# from .scaffold_options import test_options, serving_options, built_with_opts
+from write_me.stp_info import setup_parsed as setup_dict
+import pdb; pdb.set_trace()
 
 # os.system('rm README.md')
 # os.system('touch README.md')
@@ -59,11 +60,11 @@ def main():
 
     with open(readme, 'w') as f:
         w = mg.Writer(f)
-        w.write_heading('Project Title', 1)
+        w.write_heading(setup_dict['name'], 1)
         w.write_hrule()
 
         # Description and Key Features
-        w.writeline('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+        w.writeline(setup_dict['description'])
         key_features = mg.List()
         key_features.append('Feature #1')
         key_features.append('Feature #2')
@@ -74,9 +75,8 @@ def main():
         w.write_heading('Authors', 3)
         w.write_hrule()
         authors = mg.List()
-        authors.append(mg.link('www.github.com/chelseadole', 'Person1'))
-        authors.append(mg.link('www.github.com/chelseadole', 'Person2'))
-        authors.append(mg.link('www.github.com/chelseadole', 'Person3'))
+        for i in range(len(setup_dict['author'])):
+            authors.append(mg.link(setup_dict['url'], setup_dict['author'][i]))
         w.write(authors)
 
         w.write_heading('Getting Started', 3)
@@ -94,8 +94,8 @@ def main():
         w.write_heading(mg.emphasis('Installation'), 5)
         w.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository, create a new virtual environment, and install the repo requirements into your VE. To accomplish this, execute these commands:')
         w.writeline()
-        w.writeline('`$ git clone https://github.com/chelseadole/write-me.git`')
-        w.writeline('`$ cd write-me`')
+        w.writeline('`$ git clone {}.git`'.format(setup_dict['url']))
+        w.writeline('`$ cd {}`'.format(setup_dict['name']))
         w.writeline()
         w.writeline('Now now that you have cloned your repo and changed directories into the project, create a virtual environment, and download the project requirements into your VE.')
         w.writeline()
