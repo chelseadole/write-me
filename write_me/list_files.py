@@ -16,11 +16,13 @@ MODEL_FILES = []
 def repo_fs():
     """File listing of current repo broken up into lists."""
     for root, dirs, files in os.walk("."):
-        dirs[:] = [d for d in dirs  # add any extra dirs to ignore #
+        dirs[:] = [  # add any extra dirs to ignore #
+                   d for d in dirs
                    if '.' not in d
                    and 'ENV' not in d
                    and '__' not in d
-                   and 'build' not in d]
+                   and 'build' not in d
+                   ]
 
         for f in files:
             if f.endswith(".py"):
@@ -143,7 +145,8 @@ def parse_route_files():
 
 if __name__ == '__main__':  # pragma no cover
     repo_fs()
-    print('.PY FILES:\n', PY_FILES,
+    print(  # lists all files we are looking at if run from terminal #
+          '.PY FILES:\n', PY_FILES,
           '\n.YML FILES:\n', YML_FILES,
           '\nREQUIREMENTS:\n', PIP_FILES,
           '\nREADME.md files:\n', README_FILES,
