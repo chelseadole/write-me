@@ -13,7 +13,7 @@ def get_docstrings():
         docstring = []
         with open(test_file, 'r') as tf:
             lines = tf.readlines()
-            if lines[0].startswith('"""'):
+            if lines and lines[0].startswith('"""'):
                 if lines[0].endswith('"""\n'):
                     stripped = lines[0].strip()
                     docstring.append(stripped.strip('"""'))
