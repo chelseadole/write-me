@@ -86,6 +86,12 @@ def get_settings_files():
     return SETTINGS_FILES
 
 
+def get_dev_files():
+    """."""
+    repo_fs()
+    return DEV_FILES
+
+
 def get_py_files():
     """."""
     repo_fs()
