@@ -2,7 +2,7 @@ Tutorial
 *********
 
 Tutorial #1: Simple Project
-==============
+=============================
 
 The most simple usage of write-me is using the ``genreadme`` command to make a README for a simple project that is not a web application. Tutorial #1 walks through using write-me in this scenario using an example project: a ``data-structures`` repository containing data structures written in python and javascript, as well as configuration data.
 

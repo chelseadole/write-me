@@ -27,4 +27,3 @@ Now that you have Python and pip installed, you can proceed to installing write-
 If the installation is a success, the package will collect and install, and will end with the line:
 
 ``$ Successfully installed write-me-1.0``
-
