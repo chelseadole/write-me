@@ -69,9 +69,9 @@ def main():
     with open(readme, 'w') as f:
         w = mg.Writer(f)
         w.write_heading(setup_dict['name'], 1)
-        w.writeline('Version: ' + mg.emphasis(setup_dict['version']))
         w.write_hrule()
         # Description and Key Features
+        w.writeline('Version: ' + mg.emphasis(setup_dict['version']))
         w.writeline(setup_dict['description'])
         key_features = mg.List()
         key_features.append('Feature #1')
@@ -202,7 +202,6 @@ def main():
         w.write_heading('Acknowledgements', 3)
         w.write_hrule()
         shoutouts = mg.List()
-        shoutouts.append('Nicholas Hunt-Walker')
         shoutouts.append('Coffee')
         w.write(shoutouts)
 

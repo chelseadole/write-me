@@ -36,9 +36,9 @@ Now now that you have cloned your repo and changed directories into the project,
 `$ source ENV/bin/activate`
 `$ pip install -r requirements.txt`
 ##### *Serving Locally*
-Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `run.py`.
-`$ flask run`
-Once you have executed this command open your browser, and go to `locahost:5000/`.
+Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command at the root level of your application, at the same level as `development.ini` and `production.ini`.
+`$ pserve development.ini`
+Once you have executed this command, open your browser, and go to `localhost:6543/`.
 ### Test Suite
 ---
 ##### *Running Tests*
@@ -83,7 +83,6 @@ If you wish to contribute to this project, please contact chelseadole@gmail.com.
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 ### Acknowledgements
 ---
-* Nicholas Hunt-Walker
 * Coffee
 
 *This README was generated using [writeme.](https://github.com/chelseadole/write-me)*
