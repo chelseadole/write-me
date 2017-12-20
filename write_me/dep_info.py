@@ -1,12 +1,13 @@
 """Gather all dependencies not in standard library and return as list."""
 import re
 
-from .list_files import get_py_files
+from .list_files import get_all_py_files, get_py_files
 
 DEP_LIST = []
 
 PY_FILES = get_py_files()
 
+ALL_PY = get_all_py_files()
 
 STD_LIST = ['__future__', '__main__', '_dummy_thread',
             '_thread', 'abc', 'aifc',
@@ -122,6 +123,14 @@ STD_LIST = ['__future__', '__main__', '_dummy_thread',
             ]
 
 
+def local_modules():
+    """Strip local file path to use in parse function below."""
+    holder = []
+    for path in ALL_PY:
+        holder.append(path.rsplit('/')[-1].split('.py')[0])
+    return holder
+
+
 def parse():
     """Parse import statements, compare to std library."""
     libbies = []
@@ -143,4 +152,11 @@ def parse():
         if ', ' in lib:
             lib = lib.extend(lib.split(', '))
             libbies.remove(lib)
-    return [lib for lib in libbies if lib not in STD_LIST]
+    libbies = {lib for lib in libbies if lib not in STD_LIST}
+    final = []
+    for lib in libbies:
+        if '.' in lib:
+            final.append(lib.split('.')[-1])
+        else:
+            final.append(lib)
+    return [x for x in final if x not in local_modules()]
