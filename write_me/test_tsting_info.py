@@ -15,8 +15,8 @@ def test_non_mpty_dict():
 
 def test_a_key_in_dict():
     """Test dictionary has file path as keys."""
-    tkeys = tfd.keys()
-    assert './write_me/test_tsting_info.py' in tkeys
+    tkey = tfd.keys()
+    assert './write_me/test_tsting_info.py' in tkey
 
 
 def test_a_keys_val_in_dict():
@@ -27,8 +27,8 @@ def test_a_keys_val_in_dict():
 
 def test_b_key_in_dict():
     """Test dictionary has file path as keys."""
-    tkeys = tfd.keys()
-    assert './write_me/test_list_files.py' in tkeys
+    tkey = tfd.keys()
+    assert './write_me/test_list_files.py' in tkey
 
 
 def test_b_keys_val_in_dict():
