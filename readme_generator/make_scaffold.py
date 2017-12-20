@@ -5,10 +5,10 @@ import shutil
 import argparse
 
 from write_me.tsting_info import get_docstrings
-from write_me.stp_info import setup_parsed
+from write_me.stp_info import parse_setup_py
 from .scaffold_options import test_options, serving_options, frameworks, dbms, languages
 
-setup_dict = setup_parsed.parse_setup_py()
+setup_dict = parse_setup_py()
 # os.system('rm README.md')
 # os.system('touch README.md')
 
@@ -59,7 +59,7 @@ def main():
     else:
         readme = 'README.md'
 
-    with open('../requirements.txt', 'r') as f:
+    with open('requirements.txt', 'r') as f:
         reqs = []
         for line in f:
             line = line.strip()
@@ -69,6 +69,7 @@ def main():
     with open(readme, 'w') as f:
         w = mg.Writer(f)
         w.write_heading(setup_dict['name'], 1)
+        w.writeline('Version: ' + mg.emphasis(setup_dict['version']))
         w.write_hrule()
         # Description and Key Features
         w.writeline(setup_dict['description'])
@@ -85,6 +86,11 @@ def main():
         for i in range(len(setup_dict['author'])):
             authors.append(mg.link(setup_dict['url'], setup_dict['author'][i]))
         w.write(authors)
+
+        # DOCS
+        w.write_heading('Documentation', 3)
+        w.write_hrule()
+        w.writeline('Additional documentation can be found at: {}'.format('http://write-me.readthedocs.io/en/stable/'))
 
         w.write_heading('Getting Started', 3)
         w.write_hrule()
@@ -201,4 +207,12 @@ def main():
         w.write(shoutouts)
 
         w.writeline(mg.emphasis('This README was generated using ' + mg.link('https://github.com/chelseadole/write-me', 'writeme.')))
-    return "README generated."
+    return """
+
+        README generated.
+
+        TODOs:
+            * Complete project "Features" section
+            * Add Github URL links to "Authors" list
+
+        """
