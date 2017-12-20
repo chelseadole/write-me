@@ -7,12 +7,17 @@ import argparse
 from write_me.tsting_info import get_docstrings
 from write_me.stp_info import parse_setup_py
 from .scaffold_options import test_options, serving_options, frameworks, dbms, languages
+from write_me.django_setings_info import get_settings_info
+from write_me.django_uri_info import get_docstrings
+from write_me.dep_info import parse
 
+settings_dict = get_settings_info()
+url_dict = get_docstrings()
 setup_dict = parse_setup_py()
+dependencies = parse()
+import pdb; pdb.set_trace()
 # os.system('rm README.md')
 # os.system('touch README.md')
-
-has_web_framework = True
 
 parser = argparse.ArgumentParser()  # pragma: no cover
 parser.add_argument('-v', '--verbose',
