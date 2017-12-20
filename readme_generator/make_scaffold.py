@@ -6,6 +6,7 @@ import argparse
 
 from write_me.tsting_info import get_docstrings
 from write_me.stp_info import setup_parsed as setup_dict
+from scaffold_options import test_options, serving_options
 
 # os.system('rm README.md')
 # os.system('touch README.md')
@@ -26,7 +27,6 @@ parser.add_argument('-f', '--flask',
                     help='Flask readme scaffolding',
                     action='store_true')
 args = parser.parse_args()
-# import pdb; pdb.set_trace()
 
 
 def overwrite(answer=None):
@@ -62,7 +62,6 @@ def main():
         w = mg.Writer(f)
         w.write_heading(setup_dict['name'], 1)
         w.write_hrule()
-        # import pdb; pdb.set_trace()
         # Description and Key Features
         w.writeline(setup_dict['description'])
         key_features = mg.List()
@@ -102,15 +101,27 @@ def main():
         w.writeline('`$ python3 -m venv ENV`')
         w.writeline('`$ source ENV/bin/activate`')
         w.writeline('`$ pip install -r requirements.txt`')
-        # import pdb; pdb.set_trace()
+
         if args.django:
-            print('has args')
-        if has_web_framework:
-            # GETTING STARTED: Serving the App
+            # GETTING STARTED: Serving the App (Django)
             w.write_heading(mg.emphasis('Serving Locally'), 5)
-            w.writeline('Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`:')
-            w.writeline('`$ ./manage.py runserver`')
-            w.writeline('Once you have executed this command, open your browser, and go to `localhost:8000/`.')
+            w.writeline(serving_options['django']['instructions'])
+            w.writeline(serving_options['django']['serve_command'])
+            w.writeline(serving_options['django']['hosting'])
+
+        elif args.pyramid:
+            # GETTING STARTED: Serving the App (Pyramid)
+            w.write_heading(mg.emphasis('Serving Locally'), 5)
+            w.writeline(serving_options['pyramid']['instructions'])
+            w.writeline(serving_options['pyramid']['serve_command'])
+            w.writeline(serving_options['pyramid']['hosting'])
+
+        elif args.flask:
+            # GETTING STARTED: Serving the App (Flask)
+            w.write_heading(mg.emphasis('Serving Locally'), 5)
+            w.writeline(serving_options['flask']['instructions'])
+            w.writeline(serving_options['flask']['serve_command'])
+            w.writeline(serving_options['flask']['hosting'])
 
         # TESTS: Running & Files
         w.write_heading('Test Suite', 3)
