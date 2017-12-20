@@ -1,6 +1,7 @@
 """Test file system search."""
 import os
 
+ALL_PY_FILES = []
 PY_FILES = []
 YML_FILES = []
 PIP_FILES = []
@@ -29,6 +30,7 @@ def repo_fs():
         for f in files:
             if f.endswith(".py"):
                 if not f.startswith('__'):
+                    ALL_PY_FILES.append(os.path.join(root, f))
                     PY_FILES.append(os.path.join(root, f))
             if f.endswith(".yml"):
                 YML_FILES.append(os.path.join(root, f))
@@ -96,6 +98,18 @@ def get_py_files():
     """."""
     repo_fs()
     return PY_FILES
+
+
+def get_all_py_files():
+    """."""
+    repo_fs()
+    return ALL_PY_FILES
+
+
+def get_url_files():
+    """."""
+    repo_fs()
+    return URL_FILES
 
 
 def parse_files():
