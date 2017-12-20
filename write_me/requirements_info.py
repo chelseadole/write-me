@@ -1,9 +1,11 @@
 """Gather all dependencies not in standard library and return as list."""
-import os
+import re
 
-from .list_files import PIP_FILES
+from .list_files import get_py_files
 
 DEP_LIST = []
+
+PY_FILES = get_py_files()
 
 
 STD_LIST = ['__future__', '__main__', '_dummy_thread',
@@ -118,3 +120,20 @@ STD_LIST = ['__future__', '__main__', '_dummy_thread',
             'xmlrpc.client', 'xmlrpc.server', 'zipapp',
             'zipfile', 'zipimport', 'zlib'
             ]
+
+
+def parsley():
+    """."""
+    libbies = []
+    reg_pat = re.compile(r'(.*import.*)', re.M)
+    for py_file in PY_FILES:
+        with open(py_file) as file_obj:
+            words = file_obj.read()
+            if len(words) > 0:
+                x = re.findall(reg_pat, words)
+                for ret in x:
+                    if ret.startswith('import'):
+                        libbies.append(ret.split('import')[1].strip())
+                    if ret.startswith('from'):
+                        libbies.append(ret.split('import')[0].lstrip('from ').strip())
+    return libbies
