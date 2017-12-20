@@ -6,7 +6,7 @@ import argparse
 
 from write_me.tsting_info import get_docstrings
 from write_me.stp_info import setup_parsed as setup_dict
-from .scaffold_options import test_options, serving_options
+from .scaffold_options import test_options, serving_options, frameworks, dbms, languages
 
 # os.system('rm README.md')
 # os.system('touch README.md')
@@ -64,14 +64,6 @@ def main():
             line = line.strip()
             reqs.append(line)
     reqs = [i.split('==')[0] for i in reqs]
-    import pdb; pdb.set_trace()
-    #     with open('../setup.py', 'r') as sf:
-    # # evaluated = ast.literal_eval(sf.read())
-    # create_list = []
-    # appending = False
-    # for line in sf:
-    #     line = line.strip()
-    #     line = line.rstrip(',')
 
     with open(readme, 'w') as f:
         w = mg.Writer(f)
@@ -179,10 +171,13 @@ def main():
         w.write_heading('Development Tools', 3)
         w.write_hrule()
         tools_list = mg.List()
-        tools_list.append('Django')
-        tools_list.append('Postgres')
-        tools_list.append('Python')
-        tools_list.append('MongoDB')
+        for package in reqs:
+            if package.lower() in frameworks:
+                tools_list.append('{} - web framework')
+            elif package.lower() in dbms:
+                tools_list.append('{} - DB management system')
+            elif package.lower() in languages:
+                tools_list.append('{} - programming language')
         w.write(tools_list)
 
         # CONTRIBUTIONS
