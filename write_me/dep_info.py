@@ -122,8 +122,8 @@ STD_LIST = ['__future__', '__main__', '_dummy_thread',
             ]
 
 
-def parsley():
-    """."""
+def parse():
+    """Parse import statements, compare to std library."""
     libbies = []
     reg_pat = re.compile(r'(.*import.*)', re.M)
     for py_file in PY_FILES:
@@ -136,4 +136,11 @@ def parsley():
                         libbies.append(ret.split('import')[1].strip())
                     if ret.startswith('from'):
                         libbies.append(ret.split('import')[0].lstrip('from ').strip())
-    return libbies
+    for lib in libbies:
+        if ' as ' in lib:
+            libbies.append(lib.split(' as ')[0])
+            libbies.remove(lib)
+        if ', ' in lib:
+            lib = lib.extend(lib.split(', '))
+            libbies.remove(lib)
+    return [lib for lib in libbies if lib not in STD_LIST]
