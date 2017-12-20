@@ -44,17 +44,7 @@ serving_options = {
     }
 }
 
-built_with_opts = {
-    "frameworks": {
-        "opts": ['django', 'pyramid', 'flask', 'tornado', 'falcon', 'hug', 'sanic', 'cherrypy'],
-        "description": " - web framework"
-    },
-    "dbms": {
-        "opts": ["postgres", "mysql", "mongodb", "sqlite", "oracle"],
-        "description": " - database management system"
-    },
-    "languages": {
-        "opts": ["python", "javascript", "react", "node", "java", "swift", "c#", "c++", "c", "php", "ruby on rails", "haskell", "coffeescript", "html", "css"],
-        "description": " - programming language"
-    }
-}
+frameworks = ['django', 'pyramid', 'flask', 'tornado', 'falcon', 'hug', 'sanic', 'cherrypy']
+dbms = ["postgres", "mysql", "mongodb", "sqlite", "oracle"]
+languages = ["python", "javascript", "react", "node", "java", "swift", "c#", "c++", "c", "php", "ruby on rails", "haskell", "coffeescript"]
+markup = []
