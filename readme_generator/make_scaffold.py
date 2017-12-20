@@ -171,13 +171,14 @@ def main():
         w.write_heading('Development Tools', 3)
         w.write_hrule()
         tools_list = mg.List()
+        tools_list.append('{} - programming language'.format(mg.emphasis('python')))
         for package in reqs:
             if package.lower() in frameworks:
-                tools_list.append('{} - web framework')
+                tools_list.append('{} - web framework'.format(mg.emphasis(package.lower())))
             elif package.lower() in dbms:
-                tools_list.append('{} - DB management system')
+                tools_list.append('{} - DB management system'.format(mg.emphasis(package.lower())))
             elif package.lower() in languages:
-                tools_list.append('{} - programming language')
+                tools_list.append('{} - programming language'.format(mg.emphasis(package.lower())))
         w.write(tools_list)
 
         # CONTRIBUTIONS
