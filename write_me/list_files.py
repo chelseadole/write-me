@@ -48,6 +48,7 @@ def parse_files():
               parse_test_files,
               parse_url_files,
               parse_model_files,
+              parse_config_files
               ]
 
     while PY_FILES:
@@ -84,12 +85,20 @@ def parse_settings_files():
             PY_FILES.remove(f)
 
 
+def parse_config_files():
+    """Remove config for flask apps."""
+    a_copy = PY_FILES[::]
+    for f in a_copy:
+        if 'conf' in f:
+            SETUP_FILES.append(f)
+            PY_FILES.remove(f)
+
+
 def parse_test_files():
     """Remove test files into seperate list."""
     a_copy = PY_FILES[::]
     for f in a_copy:
         if 'test' in f:
-            # import pdb; pdb.set_trace()
             TEST_FILES.append(f)
             PY_FILES.remove(f)
 
