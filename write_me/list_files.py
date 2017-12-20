@@ -101,12 +101,12 @@ def get_py_files():
 def parse_files():
     """Parse all the files."""
     pfuncs = [  # parse py files : add #
-              parse_setup_files,
+              parse_test_files,
+              parse_model_files,
+              parse_url_files,
               parse_route_files,
               parse_settings_files,
-              parse_test_files,
-              parse_url_files,
-              parse_model_files,
+              parse_setup_files,
               ]
 
     while PY_FILES:

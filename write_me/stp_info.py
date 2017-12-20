@@ -32,7 +32,6 @@ def parse_setup_py():
                         k, v = line.split('=')
                         if v.startswith('['):
                             if v.endswith(']'):
-                                # import pdb; pdb.set_trace()
                                 v = ast.literal_eval(v)
                                 setup_parsed[k] = v
                                 continue
@@ -65,5 +64,5 @@ def parse_setup_py():
     return setup_parsed
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma no cover
     parse_setup_py()
