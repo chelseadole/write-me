@@ -1,4 +1,4 @@
-"""Get django urls paths."""
+"""Get django urls."""
 
 
 from list_files import get_url_files
@@ -7,10 +7,10 @@ url_info = {}
 
 URL_FILES = get_url_files()
 
+
 def get_docstrings():
     """Get docstings from url files."""
     for url_file in URL_FILES:
-        # import pdb; pdb.set_trace()
         docstring = []
         with open(url_file, 'r') as tf:
             lines = tf.readlines()
@@ -36,4 +36,4 @@ if __name__ == '__main__':  # pragma no cover
     get_docstrings()
 
     for url in url_info:
-        print(url, url_info[url])
+        print(url, ':',  url_info[url])
