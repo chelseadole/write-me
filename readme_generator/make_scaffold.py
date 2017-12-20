@@ -52,7 +52,10 @@ def overwrite(answer=None):
 
 def main():
     """Create README."""
-    readme = overwrite()
+    if os.path.isfile('README.md'):
+        readme = overwrite()
+    else:
+        readme = 'README.md'
 
     with open(readme, 'w') as f:
         w = mg.Writer(f)
