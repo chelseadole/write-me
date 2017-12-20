@@ -31,3 +31,53 @@ Now now that you have cloned your repo and changed directories into the project,
 `$ python3 -m venv ENV`
 `$ source ENV/bin/activate`
 `$ pip install -r requirements.txt`
+##### *Serving Locally*
+Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `run.py`.
+`$ flask run`
+Once you have executed this command open your browser, and go to `locahost:5000/`.
+### Test Suite
+---
+##### *Running Tests*
+This application uses pytest as a testing suite. To run tests, run:
+
+`$ pytest`
+
+To view test coverage, run:
+
+`$ pytest --cov`
+##### *Test Files*
+The testing files for this project are:
+
+| File Name | Description |
+|:---:|:---:|
+| `./test_scaffold.py` | Test file for ensure scaffolding functionality. |
+
+### URLs
+---
+The URLs for this project are:
+
+| URL | Description |
+|:---:|:---:|
+| `/images` | Library of all images |
+| `/images/edit` | Edit view for a single image |
+| `/images/add` | Add form for a new image |
+
+### Development Tools
+---
+* Django
+* Postgres
+* Python
+* MongoDB
+
+### Contributions
+---
+If you wish to contribute to this project, please contact chelseadole@gmail.com.
+### License
+---
+This project is licensed under the MIT License - see the LICENSE.md file for details.
+### Acknowledgements
+---
+* Nicholas Hunt-Walker
+* Coffee
+
+*This README was generated using [writeme.](https://github.com/chelseadole/write-me)*
