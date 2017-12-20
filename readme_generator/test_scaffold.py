@@ -31,7 +31,7 @@ class TestScaffold(TestCase):
             with patch('builtins.input', side_effect=['y', 'yes']):
                 assert overwrite() == 'README.md'
 
-    def test_main_returns_succcess_text(self):
+    def test_main_returns_success_text(self):
         """Test success test returned when main is called."""
         with tempfile.TemporaryDirectory() as test_dir:
             os.chdir(test_dir)
