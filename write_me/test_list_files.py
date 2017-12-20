@@ -36,12 +36,12 @@ def test_pip_files_list():
 
 def test_url_dot_py_in_url_files():
     """Test url.py in url files."""
-    assert './write_me/urls.py' in URL_FILES
+    assert './write_me/test/urls.py' in URL_FILES
 
 
 def test_routes_dot_py_in_url_files():
     """Test routes.py in url files."""
-    assert './write_me/routes.py' in URL_FILES
+    assert './write_me/test/routes.py' in URL_FILES
 
 
 def test_setup_in_setup_files():
@@ -52,11 +52,6 @@ def test_setup_in_setup_files():
 def test_license_in_license_list():
     """Test license in license list."""
     assert './LICENSE' in LICENSE
-
-
-def test_config_in_setup_list():
-    """Test that config and conf files in setup files."""
-    assert './config.py' in SETUP_FILES
 
 
 def test_models_in_model_files():

@@ -30,5 +30,6 @@ def get_docstrings():
         test_info[test_file] = "".join(docstring)
     return test_info
 
-if __name__ == '__main__':
+
+if __name__ == '__main__':  # pragma no cover
     get_docstrings()
