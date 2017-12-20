@@ -64,13 +64,14 @@ def get_test_files():
 
 def parse_files():
     """Parse all the files."""
-    pfuncs = [parse_setup_files,
+    pfuncs = [  # parse py files : add #
+              parse_setup_files,
               parse_route_files,
               parse_settings_files,
               parse_test_files,
               parse_url_files,
               parse_model_files,
-              parse_config_files
+              parse_config_files,
               ]
 
     while PY_FILES:
@@ -97,23 +98,23 @@ def parse_setup_files():
             SETUP_FILES.append(f)
             PY_FILES.remove(f)
 
-#
-# def parse_settings_files():
-#     """Remove settings files into seperate lists."""
-#     a_copy = PY_FILES[::]
-#     for f in a_copy:
-#         if 'settings' in f:
-#             SETUP_FILES.append(f)
-#             PY_FILES.remove(f)
+
+def parse_settings_files():
+    """Remove settings files into seperate lists."""
+    a_copy = PY_FILES[::]
+    for f in a_copy:
+        if 'settings' in f:
+            SETUP_FILES.append(f)
+            PY_FILES.remove(f)
 
 
-# def parse_config_files():
-#     """Remove config for flask apps."""
-#     a_copy = PY_FILES[::]
-#     for f in a_copy:
-#         if 'conf' in f:
-#             SETUP_FILES.append(f)
-#             PY_FILES.remove(f)
+def parse_config_files():
+    """Remove config for flask apps."""
+    a_copy = PY_FILES[::]
+    for f in a_copy:
+        if 'conf' in f:
+            SETUP_FILES.append(f)
+            PY_FILES.remove(f)
 
 
 def parse_test_files():
