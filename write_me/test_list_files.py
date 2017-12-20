@@ -54,11 +54,6 @@ def test_license_in_license_list():
     assert './LICENSE' in LICENSE
 
 
-def test_config_in_setup_list():
-    """Test that config and conf files in setup files."""
-    assert './config.py' in SETUP_FILES
-
-
 def test_models_in_model_files():
     """Test that models file in MODEL_FILES."""
     assert './write_me/test/models.py' in MODEL_FILES
