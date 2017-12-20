@@ -1,40 +1,36 @@
 """Test file for ensure scaffolding functionality."""
-# import os
-#
-# import shutil
-#
-# import tempfile
-#
-# from unittest import TestCase
-#
-# from unittest.mock import patch
-#
-# import pytest
-#
-# from readme_generator.make_scaffold import main, overwrite
-#
-#
-# class TestScaffold(TestCase):
-#     """Scaffold class for testing inputs and file creation."""
+import os
 
-    # def test_overwrite_input_no(self):
-    #     """Test overwrite function if no entered."""
-    #     with tempfile.TemporaryDirectory() as test_dir:
-    #         os.chdir(test_dir)
-    #         f = tempfile.NamedTemporaryFile()
-    #         f.name = 'README.md'
-    #         with patch('builtins.input', side_effect=['n', 'no']):
-    #             assert overwrite() == 'README.md.new'
-    #
-    # def test_overwrite_input_yes(self):
-    #     """Test overwrite function if yes entered."""
-    #     with tempfile.TemporaryDirectory() as test_dir:
-    #         os.chdir(test_dir)
-    #         f = tempfile.NamedTemporaryFile()
-    #         f.name = 'README.md'
-    #         with patch('builtins.input', side_effect=['y', 'yes']):
-    #             assert overwrite() == 'README.md'
-    #
+import tempfile
+
+from unittest import TestCase
+
+from unittest.mock import patch
+
+from readme_generator.make_scaffold import main, overwrite
+
+
+class TestScaffold(TestCase):
+    """Scaffold class for testing inputs and file creation."""
+
+    def test_overwrite_input_no(self):
+        """Test overwrite function if no entered."""
+        with tempfile.TemporaryDirectory() as test_dir:
+            os.chdir(test_dir)
+            f = tempfile.NamedTemporaryFile()
+            f.name = 'README.md'
+            with patch('builtins.input', side_effect=['n', 'no']):
+                assert overwrite() == 'README.md.new'
+
+    def test_overwrite_input_yes(self):
+        """Test overwrite function if yes entered."""
+        with tempfile.TemporaryDirectory() as test_dir:
+            os.chdir(test_dir)
+            f = tempfile.NamedTemporaryFile()
+            f.name = 'README.md'
+            with patch('builtins.input', side_effect=['y', 'yes']):
+                assert overwrite() == 'README.md'
+
     # def test_main_returns_succcess_text(self):
     #     """Test success test returned when main is called."""
     #     with tempfile.TemporaryDirectory() as test_dir:
@@ -43,14 +39,14 @@
     #         f.name = 'README.md'
     #         with patch('builtins.input', return_value='y'):
     #             assert main() == 'README generated.'
-    #
-    # def test_overwrite_user_prompt(self):
-    #     """Test overwrite prompts user with yes/no question."""
-    #     with tempfile.TemporaryDirectory() as test_dir:
-    #         os.chdir(test_dir)
-    #         f = tempfile.NamedTemporaryFile()
-    #         f.name = 'README.md'
-    #         assert overwrite('n') == 'README.md.new'
+
+    def test_overwrite_user_prompt(self):
+        """Test overwrite prompts user with yes/no question."""
+        with tempfile.TemporaryDirectory() as test_dir:
+            os.chdir(test_dir)
+            f = tempfile.NamedTemporaryFile()
+            f.name = 'README.md'
+            assert overwrite('n') == 'README.md.new'
 
 # with open('README.md', 'r') as readme:
 #   text_readme = readme.read()

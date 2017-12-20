@@ -45,13 +45,18 @@ def test_routes_dot_py_in_url_files():
 
 
 def test_setup_in_setup_files():
-    """Test setup.py in url files."""
+    """Test setup.py in setup files."""
     assert './setup.py' in SETUP_FILES
 
 
 def test_license_in_license_list():
     """Test license in license list."""
     assert './LICENSE' in LICENSE
+
+
+def test_config_in_setup_list():
+    """Test that config and conf files in setup files."""
+    assert './conf.py' in SETUP_FILES
 
 
 @pytest.mark.parametrize('item', [item for item in PY_FILES])

@@ -174,4 +174,3 @@ def main():
 
         w.writeline(mg.emphasis('This README was generated using ' + mg.link('https://github.com/chelseadole/write-me', 'writeme.')))
     return "README generated."
-main()

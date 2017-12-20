@@ -1,3 +1,4 @@
 [run]
-include=src/list_files.py
-        readme_generator/test_scaffold.py
+include=write_me/list_files.py
+        write_me/tsting_info.py
+        readme_generator/make_scaffold.py
