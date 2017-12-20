@@ -54,9 +54,9 @@ def test_license_in_license_list():
     assert './LICENSE' in LICENSE
 
 
-def test_config_in_setup_list():
-    """Test that config and conf files in setup files."""
-    assert './conf.py' in SETUP_FILES
+# def test_config_in_setup_list():
+#     """Test that config and conf files in setup files."""
+#     assert './conf.py' in SETUP_FILES
 
 
 @pytest.mark.parametrize('item', [item for item in PY_FILES])
