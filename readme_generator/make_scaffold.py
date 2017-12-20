@@ -215,5 +215,6 @@ def main():
             * Complete project "Features" section
             * Add Github URL links to "Authors" list
             * Link additional documentation to "Documentation" section
+            * Populate "Acknowledgements" section
 
         """
