@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to writeme's documentation!
+Welcome to write-me's documentation!
 ===================================
 
-Writeme generates concise, effective, and specific READMEs based on your codebase.
+Write-me generates concise, effective, and specific READMEs based on your codebase.
 
 Contents:
 
@@ -18,12 +18,3 @@ Contents:
    tutorial
    userguide
    examples
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
