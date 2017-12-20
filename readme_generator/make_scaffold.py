@@ -6,7 +6,6 @@ import argparse
 
 from write_me.tsting_info import get_docstrings
 from write_me.stp_info import setup_parsed as setup_dict
-import pdb; pdb.set_trace()
 
 # os.system('rm README.md')
 # os.system('touch README.md')
@@ -27,6 +26,7 @@ parser.add_argument('-f', '--flask',
                     help='Flask readme scaffolding',
                     action='store_true')
 args = parser.parse_args()
+# import pdb; pdb.set_trace()
 
 
 def overwrite(answer=None):
@@ -62,7 +62,7 @@ def main():
         w = mg.Writer(f)
         w.write_heading(setup_dict['name'], 1)
         w.write_hrule()
-
+        # import pdb; pdb.set_trace()
         # Description and Key Features
         w.writeline(setup_dict['description'])
         key_features = mg.List()
@@ -102,7 +102,9 @@ def main():
         w.writeline('`$ python3 -m venv ENV`')
         w.writeline('`$ source ENV/bin/activate`')
         w.writeline('`$ pip install -r requirements.txt`')
-
+        # import pdb; pdb.set_trace()
+        if args.django:
+            print('has args')
         if has_web_framework:
             # GETTING STARTED: Serving the App
             w.write_heading(mg.emphasis('Serving Locally'), 5)
@@ -160,7 +162,7 @@ def main():
         # CONTRIBUTIONS
         w.write_heading('Contributions', 3)
         w.write_hrule()
-        w.writeline('If you wish to contribute to this project, please contact NAME1 or NAME2.')
+        w.writeline('If you wish to contribute to this project, please contact {}.'.format(setup_dict['author_email']))
 
         # LICENSE
         w.write_heading('License', 3)
