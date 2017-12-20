@@ -58,6 +58,21 @@ def main():
     else:
         readme = 'README.md'
 
+    with open('../requirements.txt', 'r') as f:
+        reqs = []
+        for line in f:
+            line = line.strip()
+            reqs.append(line)
+    reqs = [i.split('==')[0] for i in reqs]
+    import pdb; pdb.set_trace()
+    #     with open('../setup.py', 'r') as sf:
+    # # evaluated = ast.literal_eval(sf.read())
+    # create_list = []
+    # appending = False
+    # for line in sf:
+    #     line = line.strip()
+    #     line = line.rstrip(',')
+
     with open(readme, 'w') as f:
         w = mg.Writer(f)
         w.write_heading(setup_dict['name'], 1)
