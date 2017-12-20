@@ -14,7 +14,7 @@ Requirements, dependencies, etc.
 ### Installing
 
 ```
-pip install 'package_name'
+pip install write-me
 ```
 
 ## Deployment
@@ -23,11 +23,11 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-**Chelsea Dole**
-**Darren Haynes**
-**Gabriel Meringolo**
-**Chris Closser**
-**Matt Favoino**
++ **Chelsea Dole**
++ **Darren Haynes**
++ **Gabriel Meringolo**
++ **Chris Closser**
++ **Matt Favoino**
 
 ## License
 
