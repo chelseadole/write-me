@@ -212,8 +212,8 @@ def main():
         README generated.
 
         User TODOs:
-            * Complete project "Features" section
-            * Add Github URL links to "Authors" list
+            * Add application highlights to bullet-point "Features" section
+            * Add contributor Github URL links to "Authors" section
             * Link additional documentation to "Documentation" section
             * Populate "Acknowledgements" section
 
