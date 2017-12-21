@@ -109,7 +109,7 @@ def main():
         w.write_hrule()
         authors = mg.List()
         for i in range(len(setup_dict['author'])):
-            authors.append(mg.link(setup_dict['url'], setup_dict['author'][i]))
+            authors.append(mg.link(user_data['project_user_profile_url'], setup_dict['author'][i]))
         w.write(authors)
 
         # DEPENDENCIES
