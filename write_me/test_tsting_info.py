@@ -2,10 +2,10 @@
 
 import pytest
 
-from write_me.tsting_info import get_docstrings
+from write_me.tsting_info import get_test_docstrings
 
 
-tfd = get_docstrings()
+tfd = get_test_docstrings()
 
 
 def test_non_mpty_dict():
@@ -42,7 +42,7 @@ def test_is_dict():
     assert type(tfd) is dict
 
 
-@pytest.mark.parametrize('fname', [fname for fname in get_docstrings()])
+@pytest.mark.parametrize('fname', [fname for fname in get_test_docstrings()])
 def test_filenames_should_be_test_files(fname):
     """All filenames should have string 'test' in them."""
     assert 'test' in fname
