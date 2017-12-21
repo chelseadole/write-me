@@ -108,8 +108,9 @@ def main():
         w.write_heading('Authors', 3)
         w.write_hrule()
         authors = mg.List()
+        import pdb; pdb.set_trace()
         for i in range(len(setup_dict['author'])):
-            authors.append(mg.link(user_data['project_user_profile_url'], setup_dict['author'][i]))
+            authors.append(mg.link(user_data['url'], setup_dict['author'][i]))
         w.write(authors)
 
         if len(dependencies) > 0:
