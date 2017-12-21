@@ -14,6 +14,9 @@ setup_keys = [
               'packages',
               'author=']
 
+project_dict = get_project_url()
+setup_files = get_setup_file()
+
 
 def parse_authors():
     """Turn string of authors into list of authors."""
@@ -33,8 +36,6 @@ def parse_authors():
 
 def parse_setup_py():
     """Convert needed info from setup.py into dict."""
-    project_dict = get_project_url()
-    setup_files = get_setup_file()
     if not setup_files:
         setup_parsed['version'] = "YOUR VERSION HERE"
         setup_parsed['description'] = get_git_description()

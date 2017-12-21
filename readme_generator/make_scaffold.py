@@ -91,6 +91,7 @@ def main():
         w.write_hrule()
 
         # Description and Key Features
+        w.write_heading('Description', 3)
         if badge:
             w.writeline(badge)
             w.writeline()
