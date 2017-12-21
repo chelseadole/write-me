@@ -14,6 +14,7 @@ setup_keys = [
               'packages',
               'author=']
 
+
 def parse_authors():
     """Turn string of authors into list of authors."""
     author_string = setup_parsed['author']
