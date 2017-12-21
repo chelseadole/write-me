@@ -103,13 +103,12 @@ def main():
         key_features.append('Feature #3')
         w.write(key_features)
 
-        import pdb; pdb.set_trace()
         # AUTHORS
         w.write_heading('Authors', 3)
         w.write_hrule()
         authors = mg.List()
         for i in range(len(setup_dict['author'])):
-            authors.append(mg.link(setup_dict['url'], setup_dict['author'][i]))
+            authors.append(mg.link(user_data['project_user_profile_url'], setup_dict['author'][i]))
         w.write(authors)
 
         # DEPENDENCIES
