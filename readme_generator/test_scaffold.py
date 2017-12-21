@@ -4,6 +4,7 @@ import os
 import tempfile
 
 from unittest import TestCase
+import markdown_generator as mg
 
 from unittest.mock import patch
 
