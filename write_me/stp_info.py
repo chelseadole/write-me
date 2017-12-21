@@ -15,18 +15,33 @@ setup_keys = [
               'author=']
 
 
+def parse_authors():
+    """Turn string of authors into list of authors."""
+    author_string = setup_parsed['author']
+    if ',' in author_string:
+        author_list = author_string.split(',')
+        remove_quotes = [author.replace('"', '') for author in author_list]
+        remove_quotes = [author.replace("'", "") for author in author_list]
+        strip_white_space = [author.strip() for author in remove_quotes]
+        return strip_white_space
+
+    author_string = author_string.replace("'", "")
+    author_string = author_string.replace('"', '')
+    author_string = author_string.strip()
+    return [author_string]
+
+
 def parse_setup_py():
     """Convert needed info from setup.py into dict."""
 
     setup_files = get_setup_file()
     if not setup_files:
-        project_dict = get_project_url()
         setup_parsed['version'] = "YOUR VERSION HERE"
         setup_parsed['description'] = get_git_description()
         setup_parsed['author_email'] = "YOUR EMAIL HERE"
         setup_parsed['packages'] = "YOUR PACKAGES HERE"
         setup_parsed['author'] = [project_dict['project_user']]
-        return
+        return setup_parsed
 
     with open(setup_files[0], 'r') as sf:
         create_list = []
@@ -68,6 +83,10 @@ def parse_setup_py():
     if 'packages' in setup_parsed:
         if setup_parsed['packages'] == 'find_packages()':
             setup_parsed['packages'] = ''
+
+    if 'author' in setup_parsed:
+        if isinstance(setup_parsed['author'], str):
+            setup_parsed['author'] = parse_authors()
 
     if not setup_parsed['author']:
         # get from author from setup_data dict instead.
