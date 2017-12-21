@@ -17,6 +17,7 @@ Python package to assist developers with constructing README as project evolves.
 ##### Dependencies
 ---
 * markdown_generator
+* project_info
 
 ##### *Prerequisites*
 * [python (3.6+)](https://www.python.org/downloads/)
@@ -26,8 +27,9 @@ Python package to assist developers with constructing README as project evolves.
 ##### *Installation*
 First, clone the project repo from Github. Then, change directories into the cloned repository. To accomplish this, execute these commands:
 
-`$ git clone https://github.com/chelseadole/write-me.git`
-`$ cd write_me`
+`$ git clone https://github.com/chelseadole/write-me.git
+.git`
+`$ cd write-me.git`
 
 Now now that you have cloned your repo and changed directories into the project, create a virtual environment named "ENV", and install the project requirements into your VE.
 

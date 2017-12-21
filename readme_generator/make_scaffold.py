@@ -83,7 +83,7 @@ def main():
 
     with open(readme, 'w') as f:
         w = mg.Writer(f)
-        w.write_heading(setup_dict['name'], 1)
+        w.write_heading(user_data['project_name'], 1)
         w.write_hrule()
 
         # Description and Key Features
