@@ -70,6 +70,12 @@ def get_test_files():
     return TEST_FILES
 
 
+def get_yml_files():
+    """Return list of all test files in project."""
+    repo_fs()
+    return YML_FILES
+
+
 def get_license():
     """Return license file path."""
     repo_fs()
