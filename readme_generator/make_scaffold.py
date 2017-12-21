@@ -125,10 +125,10 @@ def main():
             # DOCS
             w.write_heading('Documentation', 3)
             w.write_hrule()
-            w.writeline('Additional documentation can be found at: {}'.format('http://write-me.readthedocs.io/en/stable/'))
-            w.write_hrule()
+            w.writeline('Additional documentation can be found at: YOUR DOC SITE HERE')
 
         w.write_heading('Getting Started', 3)
+        w.write_hrule()
 
         # GETTING STARTED: Installation requirements
         w.write_heading(mg.emphasis('Prerequisites'), 5)
