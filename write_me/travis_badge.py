@@ -37,7 +37,7 @@ def get_travis_badge():
         badge_with_coverall = COVERALLS.format(user, name)
         badge = badge + " " + badge_with_coverall
 
-    return(badge)
+    return badge 
 
 if __name__ == '__main__':  # pragma no cover
     res = get_travis_badge()
