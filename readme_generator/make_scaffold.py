@@ -3,6 +3,8 @@ import markdown_generator as mg
 import os
 import shutil
 import argparse
+from pathlib import Path
+from write_me.list_files import get_all_py_files
 
 from write_me.django_setings_info import get_settings_info
 from write_me.django_uri_info import get_url_docstrings
@@ -19,7 +21,20 @@ setup_dict = parse_setup_py()
 dependencies = parse()
 license = get_license_type()
 test_dict = get_docstrings()
+get_all_py = get_all_py_files()
+testing_mod = parse(get_all_py)
 
+# if os.path.isfile('requirements.txt'):
+#     with open('requirements.txt', 'r') as f:
+#         testing_mod = ''
+#         for line in f:
+#             line = line.strip()
+#             if "nose" in line:
+#                 testing_mod = "nose"
+#             elif "pytest" in line:
+#                 testing_mod = "pytest"
+#         if not testing_mod:
+#             testing_mod = "unittest"
 
 # os.system('rm README.md')
 # os.system('touch README.md')
@@ -69,12 +84,6 @@ def main():
     else:
         readme = 'README.md'
 
-    with open('requirements.txt', 'r') as f:
-        reqs = []
-        for line in f:
-            line = line.strip()
-            reqs.append(line)
-    reqs = [i.split('==')[0] for i in reqs]
     import pdb; pdb.set_trace()
     with open(readme, 'w') as f:
         w = mg.Writer(f)
@@ -124,12 +133,12 @@ def main():
 
         # GETTING STARTED: Cloning/VE Instructions
         w.write_heading(mg.emphasis('Installation'), 5)
-        w.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository, create a new virtual environment, and install the repo requirements into your VE. To accomplish this, execute these commands:')
+        w.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository. To accomplish this, execute these commands:')
         w.writeline()
         w.writeline('`$ git clone {}.git`'.format(setup_dict['url']))
         w.writeline('`$ cd {}`'.format(setup_dict['name']))
         w.writeline()
-        w.writeline('Now now that you have cloned your repo and changed directories into the project, create a virtual environment, and download the project requirements into your VE.')
+        w.writeline('Now now that you have cloned your repo and changed directories into the project, create a virtual environment named "ENV", and install the project requirements into your VE.')
         w.writeline()
         w.writeline('`$ python3 -m venv ENV`')
         w.writeline('`$ source ENV/bin/activate`')
@@ -159,37 +168,40 @@ def main():
         # TESTS: Running & Files
         w.write_heading('Test Suite', 3)
         w.write_hrule()
-        w.write_heading(mg.emphasis('Running Tests'), 5)
-        w.writeline('This application uses pytest as a testing suite. To run tests, run:')
-        w.writeline()
-        w.writeline('`$ pytest`')
-        w.writeline()
-        w.writeline('To view test coverage, run:')
-        w.writeline()
-        w.writeline('`$ pytest --cov`')
-
-        w.write_heading(mg.emphasis('Test Files'), 5)
-        w.writeline('The testing files for this project are:')
-        w.writeline()
-        test_table = mg.Table()
-        test_table.add_column('File Name', mg.Alignment.CENTER)
-        test_table.add_column('Description', mg.Alignment.CENTER)
-        for key, val in test_dict.items():
-            test_table.append('`{}`'.format(key), val)
-        w.write(test_table)
-
-        # URLS - table
-        if args.django or args.pyramid or args.flask:
-            w.write_heading('URLs', 3)
-            w.write_hrule()
-            w.writeline('The URLS for this project can be found in the following modules:')
+        if len(test_dict.keys()) > 0:
+            w.write_heading(mg.emphasis('Running Tests'), 5)
+            w.writeline('This application uses {} as a testing suite. To run tests, run:'.format(mg.link(test_options[testing_mod][0], testing_mod)))
             w.writeline()
-            urls_table = mg.Table()
-            urls_table.add_column('URL module', mg.Alignment.CENTER)
-            urls_table.add_column('Description', mg.Alignment.CENTER)
-            for key, val in url_dict.items():
-                urls_table.append(key, val)
-            w.write(urls_table)
+            w.writeline('`{}`'.format(test_options[testing_mod][1]))
+            w.writeline()
+            w.writeline('To view test coverage, run:')
+            w.writeline()
+            w.writeline('`{}`'.format(test_options[testing_mod][2]))
+
+            w.write_heading(mg.emphasis('Test Files'), 5)
+            w.writeline('The testing files for this project are:')
+            w.writeline()
+            test_table = mg.Table()
+            test_table.add_column('File Name', mg.Alignment.CENTER)
+            test_table.add_column('Description', mg.Alignment.CENTER)
+            for key, val in test_dict.items():
+                test_table.append('`{}`'.format(key), val)
+            w.write(test_table)
+
+            # URLS - table
+            if args.django or args.pyramid or args.flask:
+                w.write_heading('URLs', 3)
+                w.write_hrule()
+                w.writeline('The URLS for this project can be found in the following modules:')
+                w.writeline()
+                urls_table = mg.Table()
+                urls_table.add_column('URL module', mg.Alignment.CENTER)
+                urls_table.add_column('Description', mg.Alignment.CENTER)
+                for key, val in url_dict.items():
+                    urls_table.append(key, val)
+                w.write(urls_table)
+        else:
+            w.writeline('This repository contains no tests.')
 
         # APPLICATIONS (Django) -v
         if args.django and args.verbose:
@@ -206,13 +218,20 @@ def main():
         w.write_hrule()
         tools_list = mg.List()
         tools_list.append('{} - programming language'.format(mg.emphasis('python')))
-        for package in reqs:
-            if package.lower() in frameworks:
-                tools_list.append('{} - web framework'.format(mg.emphasis(package.lower())))
-            elif package.lower() in dbms:
-                tools_list.append('{} - DB management system'.format(mg.emphasis(package.lower())))
-            elif package.lower() in languages:
-                tools_list.append('{} - programming language'.format(mg.emphasis(package.lower())))
+        if os.path.isfile('requirements.txt'):
+            with open('requirements.txt', 'r') as f:
+                reqs = []
+                for line in f:
+                    line = line.strip()
+                    reqs.append(line)
+            reqs = [i.split('==')[0] for i in reqs]
+            for package in reqs:
+                if package.lower() in frameworks:
+                    tools_list.append('{} - web framework'.format(mg.emphasis(package.lower())))
+                elif package.lower() in dbms:
+                    tools_list.append('{} - DB management system'.format(mg.emphasis(package.lower())))
+                elif package.lower() in languages:
+                    tools_list.append('{} - programming language'.format(mg.emphasis(package.lower())))
         w.write(tools_list)
 
         if args.verbose:
