@@ -103,7 +103,6 @@ def main():
         key_features.append('Feature #3')
         w.write(key_features)
 
-        import pdb; pdb.set_trace()
         # AUTHORS
         w.write_heading('Authors', 3)
         w.write_hrule()
