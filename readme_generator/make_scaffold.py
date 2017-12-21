@@ -1,22 +1,23 @@
-"""Module to create README.md file with basic scaffold, using markdown_generator."""
-import markdown_generator as mg
+"""Module to create README.md file with basic scaffold."""
+import argparse
 import os
 import shutil
-import argparse
-from pathlib import Path
-from write_me.list_files import get_all_py_files
 
+import markdown_generator as mg
+
+from readme_generator.scaffold_options import (dbms, frameworks, languages,
+                                               serving_options, test_options,)
+
+from write_me.dep_info import parse
 from write_me.django_setings_info import get_settings_info
 from write_me.django_uri_info import get_url_docstrings
-from write_me.dep_info import parse
 from write_me.get_license import get_license_type
-from write_me.tsting_info import get_docstrings
-from write_me.stp_info import parse_setup_py
+from write_me.list_files import get_all_py_files
 from write_me.project_data import get_project_url
 from write_me.pyramid_ini import get_dev_info
 from write_me.travis_badge import get_travis_badge
-
-from readme_generator.scaffold_options import test_options, serving_options, frameworks, dbms, languages
+from write_me.stp_info import parse_setup_py
+from write_me.tsting_info import get_docstrings
 
 settings_dict = get_settings_info()
 url_dict = get_url_docstrings()
@@ -36,9 +37,6 @@ for i in testing_lst:
         testing_mod = i
 if not testing_mod:
     testing_mod = "unittest"
-
-# os.system('rm README.md')
-# os.system('touch README.md')
 
 parser = argparse.ArgumentParser()  # pragma: no cover
 parser.add_argument('-v', '--verbose',
@@ -60,7 +58,9 @@ def overwrite(answer=None):
     """Check if user wants to overwrite existing README.md."""
     prompt_txt = """
     Do you want to overwrite your present README file?
-    Don't worry, if you overwrite your present README it will be backed up to README.md.old
+    Don't worry, if you overwrite your present README
+    it will be backed up to README.md.old
+
     Yes or no?
     """
     poss_answers = ['n', 'no', 'y', 'yes']
