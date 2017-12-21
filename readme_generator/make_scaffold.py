@@ -88,6 +88,7 @@ def main():
 
         # Description and Key Features
         w.writeline('Version: ' + mg.emphasis(setup_dict['version']))
+        w.writeline()
         w.writeline(setup_dict['description'])
         key_features = mg.List()
         key_features.append('Feature #1')
@@ -119,6 +120,8 @@ def main():
 
             w.write_heading('Getting Started', 3)
             w.write_hrule()
+
+        w.write_heading('Getting Started', 3)
 
         # GETTING STARTED: Installation requirements
         w.write_heading(mg.emphasis('Prerequisites'), 5)
