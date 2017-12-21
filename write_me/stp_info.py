@@ -17,10 +17,10 @@ setup_keys = [
 
 def parse_setup_py():
     """Convert needed info from setup.py into dict."""
+    project_dict = get_project_url()
 
     setup_files = get_setup_file()
     if not setup_files:
-        project_dict = get_project_url()
         setup_parsed['version'] = "YOUR VERSION HERE"
         setup_parsed['description'] = get_git_description()
         setup_parsed['author_email'] = "YOUR EMAIL HERE"
