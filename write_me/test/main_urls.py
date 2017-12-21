@@ -1,1 +1,4 @@
-"""a doc string"""
+"""A multi line string.
+
+with a line space.
+"""
