@@ -9,6 +9,7 @@ PY_FILES = get_py_files()
 
 ALL_PY = get_all_py_files()
 
+
 STD_LIST = ['__future__', '__main__', '_dummy_thread',
             '_thread', 'abc', 'aifc',
             'argparse', 'array', 'ast',
@@ -131,11 +132,11 @@ def local_modules():
     return holder
 
 
-def parse():
+def parse(files=PY_FILES):
     """Parse import statements, compare to std library."""
     libbies = []
     reg_pat = re.compile(r'(.*import.*)', re.M)
-    for py_file in PY_FILES:
+    for py_file in files:
         with open(py_file) as file_obj:
             words = file_obj.read()
             if len(words) > 0:

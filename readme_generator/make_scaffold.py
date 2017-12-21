@@ -3,14 +3,41 @@ import markdown_generator as mg
 import os
 import shutil
 import argparse
+from pathlib import Path
+from write_me.list_files import get_all_py_files
 
+from write_me.django_setings_info import get_settings_info
+from write_me.django_uri_info import get_url_docstrings
+from write_me.dep_info import parse
+from write_me.get_license import get_license_type
 from write_me.tsting_info import get_docstrings
-# from .scaffold_options import test_options, serving_options, built_with_opts
+from write_me.stp_info import parse_setup_py
+
+from readme_generator.scaffold_options import test_options, serving_options, frameworks, dbms, languages
+
+settings_dict = get_settings_info()
+url_dict = get_url_docstrings()
+setup_dict = parse_setup_py()
+dependencies = parse()
+license = get_license_type()
+test_dict = get_docstrings()
+get_all_py = get_all_py_files()
+testing_mod = parse(get_all_py)
+
+# if os.path.isfile('requirements.txt'):
+#     with open('requirements.txt', 'r') as f:
+#         testing_mod = ''
+#         for line in f:
+#             line = line.strip()
+#             if "nose" in line:
+#                 testing_mod = "nose"
+#             elif "pytest" in line:
+#                 testing_mod = "pytest"
+#         if not testing_mod:
+#             testing_mod = "unittest"
 
 # os.system('rm README.md')
 # os.system('touch README.md')
-
-has_web_framework = True
 
 parser = argparse.ArgumentParser()  # pragma: no cover
 parser.add_argument('-v', '--verbose',
@@ -57,13 +84,15 @@ def main():
     else:
         readme = 'README.md'
 
+    import pdb; pdb.set_trace()
     with open(readme, 'w') as f:
         w = mg.Writer(f)
-        w.write_heading('Project Title', 1)
+        w.write_heading(setup_dict['name'], 1)
         w.write_hrule()
 
         # Description and Key Features
-        w.writeline('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+        w.writeline('Version: ' + mg.emphasis(setup_dict['version']))
+        w.writeline(setup_dict['description'])
         key_features = mg.List()
         key_features.append('Feature #1')
         key_features.append('Feature #2')
@@ -74,13 +103,26 @@ def main():
         w.write_heading('Authors', 3)
         w.write_hrule()
         authors = mg.List()
-        authors.append(mg.link('www.github.com/chelseadole', 'Person1'))
-        authors.append(mg.link('www.github.com/chelseadole', 'Person2'))
-        authors.append(mg.link('www.github.com/chelseadole', 'Person3'))
+        for i in range(len(setup_dict['author'])):
+            authors.append(mg.link(setup_dict['url'], setup_dict['author'][i]))
         w.write(authors)
 
-        w.write_heading('Getting Started', 3)
+        # DEPENDENCIES
+        w.write_heading('Dependencies', 5)
         w.write_hrule()
+        deps = mg.List()
+        for dep in dependencies:
+            deps.append(dep)
+        w.write(deps)
+
+        if args.verbose:
+            # DOCS
+            w.write_heading('Documentation', 3)
+            w.write_hrule()
+            w.writeline('Additional documentation can be found at: {}'.format('http://write-me.readthedocs.io/en/stable/'))
+
+            w.write_heading('Getting Started', 3)
+            w.write_hrule()
 
         # GETTING STARTED: Installation requirements
         w.write_heading(mg.emphasis('Prerequisites'), 5)
@@ -92,88 +134,136 @@ def main():
 
         # GETTING STARTED: Cloning/VE Instructions
         w.write_heading(mg.emphasis('Installation'), 5)
-        w.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository, create a new virtual environment, and install the repo requirements into your VE. To accomplish this, execute these commands:')
+        w.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository. To accomplish this, execute these commands:')
         w.writeline()
-        w.writeline('`$ git clone https://github.com/chelseadole/write-me.git`')
-        w.writeline('`$ cd write-me`')
+        w.writeline('`$ git clone {}.git`'.format(setup_dict['url']))
+        w.writeline('`$ cd {}`'.format(setup_dict['name']))
         w.writeline()
-        w.writeline('Now now that you have cloned your repo and changed directories into the project, create a virtual environment, and download the project requirements into your VE.')
+        w.writeline('Now now that you have cloned your repo and changed directories into the project, create a virtual environment named "ENV", and install the project requirements into your VE.')
         w.writeline()
         w.writeline('`$ python3 -m venv ENV`')
         w.writeline('`$ source ENV/bin/activate`')
         w.writeline('`$ pip install -r requirements.txt`')
 
-        if has_web_framework:
-            # GETTING STARTED: Serving the App
+        if args.django:
+            # GETTING STARTED: Serving the App (Django)
             w.write_heading(mg.emphasis('Serving Locally'), 5)
-            w.writeline('Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`:')
-            w.writeline('`$ ./manage.py runserver`')
-            w.writeline('Once you have executed this command, open your browser, and go to `localhost:8000/`.')
+            w.writeline(serving_options['django']['instructions'])
+            w.writeline(serving_options['django']['serve_command'])
+            w.writeline(serving_options['django']['hosting'])
+
+        elif args.pyramid:
+            # GETTING STARTED: Serving the App (Pyramid)
+            w.write_heading(mg.emphasis('Serving Locally'), 5)
+            w.writeline(serving_options['pyramid']['instructions'])
+            w.writeline(serving_options['pyramid']['serve_command'])
+            w.writeline(serving_options['pyramid']['hosting'])
+
+        elif args.flask:
+            # GETTING STARTED: Serving the App (Flask)
+            w.write_heading(mg.emphasis('Serving Locally'), 5)
+            w.writeline(serving_options['flask']['instructions'])
+            w.writeline(serving_options['flask']['serve_command'])
+            w.writeline(serving_options['flask']['hosting'])
 
         # TESTS: Running & Files
         w.write_heading('Test Suite', 3)
         w.write_hrule()
-        w.write_heading(mg.emphasis('Running Tests'), 5)
-        w.writeline('This application uses pytest as a testing suite. To run tests, run:')
-        w.writeline()
-        w.writeline('`$ pytest`')
-        w.writeline()
-        w.writeline('To view test coverage, run:')
-        w.writeline()
-        w.writeline('`$ pytest --cov`')
-
-        test_dict = get_docstrings()
-        w.write_heading(mg.emphasis('Test Files'), 5)
-        w.writeline('The testing files for this project are:')
-        w.writeline()
-        test_table = mg.Table()
-        test_table.add_column('File Name', mg.Alignment.CENTER)
-        test_table.add_column('Description', mg.Alignment.CENTER)
-        for key, val in test_dict.items():
-            test_table.append('`{}`'.format(key), val)
-        w.write(test_table)
-
-        if has_web_framework:
-            # URLS - table
-            w.write_heading('URLs', 3)
-            w.write_hrule()
-            w.writeline('The URLs for this project are:')
+        if len(test_dict.keys()) > 0:
+            w.write_heading(mg.emphasis('Running Tests'), 5)
+            w.writeline('This application uses {} as a testing suite. To run tests, run:'.format(mg.link(test_options[testing_mod][0], testing_mod)))
             w.writeline()
-            urls_table = mg.Table()
-            urls_table.add_column('URL', mg.Alignment.CENTER)
-            urls_table.add_column('Description', mg.Alignment.CENTER)
-            urls_table.append('`/images`', 'Library of all images')
-            urls_table.append('`/images/edit`', 'Edit view for a single image')
-            urls_table.append('`/images/add`', 'Add form for a new image')
-            w.write(urls_table)
+            w.writeline('`{}`'.format(test_options[testing_mod][1]))
+            w.writeline()
+            w.writeline('To view test coverage, run:')
+            w.writeline()
+            w.writeline('`{}`'.format(test_options[testing_mod][2]))
+
+            w.write_heading(mg.emphasis('Test Files'), 5)
+            w.writeline('The testing files for this project are:')
+            w.writeline()
+            test_table = mg.Table()
+            test_table.add_column('File Name', mg.Alignment.CENTER)
+            test_table.add_column('Description', mg.Alignment.CENTER)
+            for key, val in test_dict.items():
+                test_table.append('`{}`'.format(key), val)
+            w.write(test_table)
+
+            # URLS - table
+            if args.django or args.pyramid or args.flask:
+                w.write_heading('URLs', 3)
+                w.write_hrule()
+                w.writeline('The URLS for this project can be found in the following modules:')
+                w.writeline()
+                urls_table = mg.Table()
+                urls_table.add_column('URL module', mg.Alignment.CENTER)
+                urls_table.add_column('Description', mg.Alignment.CENTER)
+                for key, val in url_dict.items():
+                    urls_table.append(key, val)
+                w.write(urls_table)
+        else:
+            w.writeline('This repository contains no tests.')
+
+        # APPLICATIONS (Django) -v
+        if args.django and args.verbose:
+            w.write_heading('Django Apps', 3)
+            w.write_hrule()
+            models_list = mg.List()
+            for model in settings_dict['INSTALLED_APPS']:
+                if "django.contrib" not in model:
+                    models_list.append(model)
+            w.write(models_list)
 
         # TOOLS
         w.write_heading('Development Tools', 3)
         w.write_hrule()
         tools_list = mg.List()
-        tools_list.append('Django')
-        tools_list.append('Postgres')
-        tools_list.append('Python')
-        tools_list.append('MongoDB')
+        tools_list.append('{} - programming language'.format(mg.emphasis('python')))
+        if os.path.isfile('requirements.txt'):
+            with open('requirements.txt', 'r') as f:
+                reqs = []
+                for line in f:
+                    line = line.strip()
+                    reqs.append(line)
+            reqs = [i.split('==')[0] for i in reqs]
+            for package in reqs:
+                if package.lower() in frameworks:
+                    tools_list.append('{} - web framework'.format(mg.emphasis(package.lower())))
+                elif package.lower() in dbms:
+                    tools_list.append('{} - DB management system'.format(mg.emphasis(package.lower())))
+                elif package.lower() in languages:
+                    tools_list.append('{} - programming language'.format(mg.emphasis(package.lower())))
         w.write(tools_list)
 
-        # CONTRIBUTIONS
-        w.write_heading('Contributions', 3)
-        w.write_hrule()
-        w.writeline('If you wish to contribute to this project, please contact NAME1 or NAME2.')
+        if args.verbose:
+            # CONTRIBUTIONS
+            w.write_heading('Contributions', 3)
+            w.write_hrule()
+            w.writeline('If you wish to contribute to this project, please contact {}.'.format(setup_dict['author_email']))
 
         # LICENSE
         w.write_heading('License', 3)
         w.write_hrule()
-        w.writeline('This project is licensed under the MIT License - see the LICENSE.md file for details.')
+        w.writeline('This project is licensed under {} - see the LICENSE.md file for details.'.format(license))
 
         # ACKNOWLEDGEMENTS
         w.write_heading('Acknowledgements', 3)
         w.write_hrule()
         shoutouts = mg.List()
-        shoutouts.append('Nicholas Hunt-Walker')
         shoutouts.append('Coffee')
         w.write(shoutouts)
 
         w.writeline(mg.emphasis('This README was generated using ' + mg.link('https://github.com/chelseadole/write-me', 'writeme.')))
-    return "README generated."
+    return """
+
+        README generated.
+
+        User TODOs:
+            * Add application highlights to bullet-point "Features" section
+            * Add contributor Github URL links to "Authors" section
+            * Link additional documentation to "Documentation" section
+            * Populate "Acknowledgements" section
+
+        """
+if __name__ == "__main__":
+    main()

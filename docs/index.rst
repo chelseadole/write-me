@@ -15,6 +15,6 @@ Contents:
 
    intro
    installation
-   tutorial
    userguide
-   examples
+   tutorial
+
