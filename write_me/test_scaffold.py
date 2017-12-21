@@ -8,7 +8,7 @@
 
 # from unittest.mock import patch
 
-# from readme_generator.make_scaffold import overwrite, user_data, license, setup_dict, dependencies
+# from readme_generator.make_scaffold import user_data, license, setup_dict, dependencies
 
 
 # class TestScaffold(TestCase):
