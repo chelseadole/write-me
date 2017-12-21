@@ -174,7 +174,7 @@ def main():
                 w.writeline('`$ ./manage.py migrate`')
                 w.writeline()
 
-            if args.django and "mymssql" in reqs:
+            elif args.django and "mymssql" in reqs:
                 # Additional Django setup requirements using MySQL
                 w.writeline()
                 w.writeline('Open MySQL using the `psql` command from your Terminal, with your personal user data.')
@@ -186,7 +186,7 @@ def main():
                 w.writeline('`$ ./manage.py migrate`')
                 w.writeline()
 
-            if args.django and "cx_Oracle" in reqs:
+            elif args.django and "cx_Oracle" in reqs:
                 # Additional Django setup requirements using Oracle
                 w.writeline()
                 w.writeline('Open Oracle using the `sqlplus` command from your Terminal.')
@@ -317,7 +317,7 @@ def main():
         w.write(shoutouts)
 
         w.writeline(mg.emphasis('This README was generated using ' + mg.link('https://github.com/chelseadole/write-me', 'writeme.')))
-    return """
+    print("""
 
         README generated.
 
@@ -328,6 +328,6 @@ def main():
 
         Please review your new README, and complete any sections that require additional user input.
 
-        """
+        """)
 if __name__ == "__main__":
     main()
