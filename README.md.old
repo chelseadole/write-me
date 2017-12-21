@@ -16,8 +16,8 @@ Python package to assist developers with constructing README as project evolves.
 
 ##### Dependencies
 ---
-* project_info
 * markdown_generator
+* project_info
 
 ##### *Prerequisites*
 * [python (3.6+)](https://www.python.org/downloads/)

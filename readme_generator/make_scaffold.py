@@ -104,7 +104,7 @@ def main():
         w.write(authors)
 
         # DEPENDENCIES
-        w.write_heading('Dependencies', 5)
+        w.write_heading('Dependencies', 3)
         w.write_hrule()
         deps = mg.List()
         for dep in dependencies:
@@ -134,12 +134,15 @@ def main():
         w.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository. To accomplish this, execute these commands:')
         w.writeline()
         w.writeline('`$ git clone {}.git`'.format(user_data['url']))
+        w.writeline()
         w.writeline('`$ cd {}`'.format(user_data['project_name']))
         w.writeline()
         w.writeline('Now now that you have cloned your repo and changed directories into the project, create a virtual environment named "ENV", and install the project requirements into your VE.')
         w.writeline()
         w.writeline('`$ python3 -m venv ENV`')
+        w.writeline()
         w.writeline('`$ source ENV/bin/activate`')
+        w.writeline()
         w.writeline('`$ pip install -r requirements.txt`')
 
         if args.django:

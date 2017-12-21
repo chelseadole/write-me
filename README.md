@@ -1,4 +1,4 @@
-# write_me
+# write-me.git
 ---
 Version: *0.51*
 Python package to assist developers with constructing README as project evolves.
