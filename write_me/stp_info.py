@@ -34,6 +34,7 @@ def parse_setup_py():
     """Convert needed info from setup.py into dict."""
     project_dict = get_project_url()
     setup_files = get_setup_file()
+
     if not setup_files:
         setup_parsed['version'] = "YOUR VERSION HERE"
         setup_parsed['description'] = get_git_description()

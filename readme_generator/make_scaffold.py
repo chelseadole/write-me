@@ -91,6 +91,7 @@ def main():
         w.write_hrule()
 
         # Description and Key Features
+        w.write_heading('Description', 3)
         if badge:
             w.writeline(badge)
             w.writeline()
@@ -222,6 +223,16 @@ def main():
                 if "django.contrib" not in model:
                     models_list.append(model)
             w.write(models_list)
+
+        # APPLICATIONS (Pyramid)
+        if args.pyramid:
+            w.write_heading('Pyramid Development Files', 3)
+            w.write_hrule()
+            w.writeline('Development files specific to the Pyramid web framework can be found in the following files:')
+            pyr_table = mg.Table()
+            for key, val in pyramid_info.items():
+                pyr_table.append(key, val)
+            w.write(pyr_table)
 
         # TOOLS
         w.write_heading('Development Tools', 3)
