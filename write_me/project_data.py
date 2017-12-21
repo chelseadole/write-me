@@ -22,7 +22,7 @@ def get_user_profile_url(user):
     return 'https://github.com/{}'.format(user)
 
 
-def get_project_url():
+def get_project_url():  # pragma no cover
     """Open .git/config file and git the url from it."""
     project_info = {}
     with open('./.git/config', 'r') as git_config:
@@ -54,7 +54,7 @@ def get_project_url():
     return project_info
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma no cover
     info = get_project_url()
     for i in info:
         print(i, info[i])

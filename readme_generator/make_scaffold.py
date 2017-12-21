@@ -1,20 +1,23 @@
-"""Module to create README.md file with basic scaffold, using markdown_generator."""
-import markdown_generator as mg
+"""Module to create README.md file with basic scaffold."""
+import argparse
 import os
 import shutil
-import argparse
-from pathlib import Path
-from write_me.list_files import get_all_py_files
 
+import markdown_generator as mg
+
+from readme_generator.scaffold_options import (dbms, frameworks, languages,
+                                               serving_options, test_options,)
+
+from write_me.dep_info import parse
 from write_me.django_setings_info import get_settings_info
 from write_me.django_uri_info import get_url_docstrings
-from write_me.dep_info import parse
 from write_me.get_license import get_license_type
-from write_me.tsting_info import get_docstrings
-from write_me.stp_info import parse_setup_py
+from write_me.list_files import get_all_py_files
 from write_me.project_data import get_project_url
-
-from readme_generator.scaffold_options import test_options, serving_options, frameworks, dbms, languages
+from write_me.pyramid_ini import get_dev_info
+from write_me.travis_badge import get_travis_badge
+from write_me.stp_info import parse_setup_py
+from write_me.tsting_info import get_docstrings
 
 settings_dict = get_settings_info()
 url_dict = get_url_docstrings()
@@ -24,6 +27,8 @@ license = get_license_type()
 test_dict = get_docstrings()
 get_all_py = get_all_py_files()
 user_data = get_project_url()
+pyramid_info = get_dev_info()
+badge = get_travis_badge()
 
 testing_lst = parse(get_all_py)
 testing_mod = ''
@@ -32,9 +37,6 @@ for i in testing_lst:
         testing_mod = i
 if not testing_mod:
     testing_mod = "unittest"
-
-# os.system('rm README.md')
-# os.system('touch README.md')
 
 parser = argparse.ArgumentParser()  # pragma: no cover
 parser.add_argument('-v', '--verbose',
@@ -56,7 +58,9 @@ def overwrite(answer=None):
     """Check if user wants to overwrite existing README.md."""
     prompt_txt = """
     Do you want to overwrite your present README file?
-    Don't worry, if you overwrite your present README it will be backed up to README.md.old
+    Don't worry, if you overwrite your present README
+    it will be backed up to README.md.old
+
     Yes or no?
     """
     poss_answers = ['n', 'no', 'y', 'yes']
@@ -87,6 +91,9 @@ def main():
         w.write_hrule()
 
         # Description and Key Features
+        if badge:
+            w.writeline(badge)
+            w.writeline()
         w.writeline('Version: ' + mg.emphasis(setup_dict['version']))
         w.writeline()
         w.writeline(setup_dict['description'])
@@ -96,6 +103,7 @@ def main():
         key_features.append('Feature #3')
         w.write(key_features)
 
+        import pdb; pdb.set_trace()
         # AUTHORS
         w.write_heading('Authors', 3)
         w.write_hrule()
@@ -246,7 +254,7 @@ def main():
         # LICENSE
         w.write_heading('License', 3)
         w.write_hrule()
-        w.writeline('This project is licensed under {} - see the LICENSE.md file for details.'.format(license))
+        w.writeline(license)
 
         # ACKNOWLEDGEMENTS
         w.write_heading('Acknowledgements', 3)
@@ -265,6 +273,8 @@ def main():
             * Add contributor Github URL links to "Authors" section
             * Link additional documentation to "Documentation" section
             * Populate "Acknowledgements" section
+
+        Please review your new README.
 
         """
 if __name__ == "__main__":

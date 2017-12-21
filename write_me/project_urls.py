@@ -1,6 +1,7 @@
 """imagersite URL Configuration."""
 from django.conf.urls import url
-from imager_profile.views import profile_view, profile_request
+
+from imager_profile.views import profile_request, profile_view
 
 
 urlpatterns = [

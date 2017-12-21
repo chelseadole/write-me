@@ -1,8 +1,8 @@
 """Get the code for the Travis Badge."""
 
 
-from list_files import get_yml_files
-from project_info import get_project_url
+from write_me.list_files import get_yml_files
+from write_me.project_data import get_project_url
 
 YAMALS = get_yml_files()
 
@@ -28,16 +28,16 @@ def get_travis_badge():
                 if "- coveralls" in line:
                     coveralls = True
 
-    project_info = get_project_url()
-    user = project_info['project_user']
-    name = project_info['project_name']
-    badge = BADGE.format(user, name)
+        project_info = get_project_url()
+        user = project_info['project_user']
+        name = project_info['project_name']
+        badge = BADGE.format(user, name)
 
-    if coveralls:
-        badge_with_coverall = COVERALLS.format(user, name)
-        badge = badge + " " + badge_with_coverall
-
-    return badge 
+        if coveralls:
+            badge_with_coverall = COVERALLS.format(user, name)
+            badge = badge + " " + badge_with_coverall
+        return badge
+    return
 
 if __name__ == '__main__':  # pragma no cover
     res = get_travis_badge()

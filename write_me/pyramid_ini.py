@@ -1,5 +1,5 @@
 """Get app name from pyramid development.ini file."""
-from list_files import get_dev_files
+from write_me.list_files import get_dev_files
 
 DEV_FILES = get_dev_files()
 
