@@ -247,7 +247,7 @@ def main():
         # LICENSE
         w.write_heading('License', 3)
         w.write_hrule()
-        w.writeline('This project is licensed under {} - see the LICENSE.md file for details.'.format(license))
+        w.writeline(license)
 
         # ACKNOWLEDGEMENTS
         w.write_heading('Acknowledgements', 3)
@@ -266,6 +266,8 @@ def main():
             * Add contributor Github URL links to "Authors" section
             * Link additional documentation to "Documentation" section
             * Populate "Acknowledgements" section
+
+        Please review your new README.
 
         """
 if __name__ == "__main__":
