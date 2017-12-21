@@ -20,7 +20,10 @@ def get_settings_info():
             txt = sf.read()
             regex = re.compile(r'INSTALLED_APPS = (.*?\])', re.DOTALL)
             result = re.search(regex, txt)
-            apps_list = ast.literal_eval(re.sub(r'\s*', '', result.group(1)))
+            if not result:
+                apps_list = ["NO SETTTINGS.PY FILE FOUND"]
+            else:
+                apps_list = ast.literal_eval(re.sub(r'\s*', '', result.group(1)))
             settings_info['INSTALLED_APPS'] = apps_list
 
     return settings_info
