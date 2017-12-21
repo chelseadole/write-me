@@ -10,7 +10,7 @@ setup(
     entry_points={
         'console_scripts': ['genreadme=readme_generator.make_scaffold:main'],
     },
-    version='0.5.2',
+    version='0.5.4',
     description='Python package to assist developers with constructing README as project evolves.',
     author=['Chelsea Dole',
             'Matt Favoino',
@@ -19,7 +19,7 @@ setup(
             'Gabriel Meringolo'],
     author_email='chelseadole@gmail.com',
     url='https://github.com/chelseadole/write-me',
-    download_url='https://github.com/chelseadole/write-me/archive/0.5.2.tar.gz',
+    download_url='https://github.com/chelseadole/write-me/archive/0.5.4.tar.gz',
     keywords=['Python', 'README', 'PyPi', 'pip'],
     classifiers=[],
     install_requires=[
