@@ -48,7 +48,7 @@ def get_project_url():  # pragma no cover
     except FileNotFoundError:
         project_info['project_user'] = "YOUR NAME HERE"
         project_info['project_name'] = "YOUR PROJECT NAME HERE"
-        project_info['project_user_profile_url'] = "YOUR PROJECT URL HERE"
+        project_info['url'] = "YOUR PROJECT URL HERE"
         return project_info
 
     project_user = get_user_name(url)
@@ -56,7 +56,7 @@ def get_project_url():  # pragma no cover
     project_name = get_project_name(url)
     project_info['project_name'] = project_name
     project_user_profile_url = get_user_profile_url(project_user)
-    project_info['project_user_profile_url'] = project_user_profile_url
+    project_info['url'] = project_user_profile_url
 
     return project_info
 
