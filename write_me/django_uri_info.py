@@ -1,14 +1,14 @@
 """Get django urls."""
 
 
-from list_files import get_url_files
+from write_me.list_files import get_url_files
 
 url_info = {}
 
 URL_FILES = get_url_files()
 
 
-def get_docstrings():
+def get_url_docstrings():
     """Get docstings from url files."""
     for url_file in URL_FILES:
         docstring = []
