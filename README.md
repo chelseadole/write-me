@@ -12,17 +12,18 @@ Python package to assist developers with constructing README as project evolves.
 
 ### Authors
 ---
-* [Chelsea Dole](https://github.com/chelseadole)
-* [Matt Favoino](https://github.com/chelseadole)
-* [Darren Haynes](https://github.com/chelseadole)
-* [Chris Closser](https://github.com/chelseadole)
-* [Gabriel Meringolo](https://github.com/chelseadole)
+* [Chelsea Dole](https://github.com/chelseadole/write-me)
+* [Matt Favoino](https://github.com/chelseadole/write-me)
+* [Darren Haynes](https://github.com/chelseadole/write-me)
+* [Chris Closser](https://github.com/chelseadole/write-me)
+* [Gabriel Meringolo](https://github.com/chelseadole/write-me)
 
 ### Dependencies
 ---
 * markdown_generator
 
 ### Getting Started
+---
 ##### *Prerequisites*
 * [python (3.6+)](https://www.python.org/downloads/)
 * [pip](https://pip.pypa.io/en/stable/)
