@@ -1,6 +1,4 @@
 """Get django urls."""
-
-
 from write_me.list_files import get_url_files
 
 url_info = {}
@@ -33,7 +31,5 @@ def get_url_docstrings():
 
 
 if __name__ == '__main__':  # pragma no cover
-    get_docstrings()
-
     for url in url_info:
-        print(url, ':',  url_info[url])
+        print(url, ':', url_info[url])

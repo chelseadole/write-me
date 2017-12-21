@@ -1,11 +1,10 @@
 """Get django settings."""
-
 import ast
 import re
 
+from write_me.get_docstrings import get_docstrings
 from write_me.list_files import get_settings_files
 
-from write_me.get_docstrings import get_docstrings
 
 SETTINGS_FILES = get_settings_files()
 

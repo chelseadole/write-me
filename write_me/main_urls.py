@@ -1,13 +1,15 @@
 """imagersite URL Configuration."""
-
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
-from imagersite import views
 from django.contrib.auth import views as auth_views
-from imagersite import settings
-from imager_profile.views import library_view
+
 from imager_images.views import image_view
+
+from imager_profile.views import library_view
+
+from imagersite import settings
+from imagersite import views
 
 
 urlpatterns = [
