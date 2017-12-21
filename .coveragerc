@@ -10,3 +10,4 @@ include=write_me/list_files.py
         write_me/get_license.py
         write_me/project_data.py
         write_me/travis_badge.py
+        write_me/django_setings_info.py
