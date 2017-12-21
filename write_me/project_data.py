@@ -34,14 +34,14 @@ def get_project_url():  # pragma no cover
                     dont_need, need = line.split('@')
                     url = need.strip()
                     url = url.replace(':', '/')
-                    url = url.rstrip('.git')
+                    url = url.replace('.git', '')
                     url = url.replace(url, 'https://' + url)
                     project_info['url'] = url
                     break
                 elif "url = https://github.com" in line:
                     dont_need, need = line.split(' = ')
                     url = need.strip()
-                    url = url.rstrip(".git")
+                    url = url.replace(".git", '')
                     project_info['url'] = url
                     break
 
