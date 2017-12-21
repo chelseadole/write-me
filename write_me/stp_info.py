@@ -18,7 +18,7 @@ def parse_setup_py():
     """Convert needed info from setup.py into dict."""
     setup_files = get_setup_file()
     if not setup_files:
-        raise FileNotFoundError("No setup.py file found in root directory")
+        return
 
     with open(setup_files[0], 'r') as sf:
         create_list = []
