@@ -54,7 +54,7 @@ def test_file_test_scaffold_has_correct_docstring():
     assert tfd['./write_me/test/test_scaffold.py'] == docstring
 
 
-def test_fivle_test_scaffold_has_correct_docstring():
-    """The."""
-    docstring = "Test file for ensure scaffolding functionality."
-    assert tfd['./readme_generator/test_scaffold.py'] == docstring
+# def test_fivle_test_scaffold_has_correct_docstring():
+#     """The."""
+#     docstring = "Test file for ensure scaffolding functionality."
+#     assert tfd['./readme_generator/test_scaffold.py'] == docstring

@@ -89,6 +89,7 @@ def main():
         w = mg.Writer(f)
         w.write_heading(setup_dict['name'], 1)
         w.write_hrule()
+
         # Description and Key Features
         w.writeline('Version: ' + mg.emphasis(setup_dict['version']))
         w.writeline(setup_dict['description'])
