@@ -28,8 +28,3 @@ def get_url_docstrings():
                 docstring.append("")
         url_info[url_file] = "".join(docstring)
     return url_info
-
-
-if __name__ == '__main__':  # pragma no cover
-    for url in url_info:
-        print(url, ':', url_info[url])
