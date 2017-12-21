@@ -37,7 +37,8 @@ def get_project_url():
                 break
             elif "url = https://github.com" in line:
                 dont_need, need = line.split(' = ')
-                url = need.rstrip(".git")
+                url = need.strip()
+                url = url.rstrip(".git")
                 project_info['url'] = url
                 break
 
