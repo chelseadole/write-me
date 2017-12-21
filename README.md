@@ -3,7 +3,7 @@
 ### Description
 [![Build Status](https://travis-ci.org/chelseadole/write-me.svg?branch=staging)](https://travis-ci.org/chelseadole/write-me) [![Coverage Status](https://coveralls.io/repos/github/chelseadole/write-me/badge.svg)](https://coveralls.io/github/chelseadole/write-me) [![PyPI version](https://badge.fury.io/py/write-me.svg)](https://badge.fury.io/py/write-me)
 
-Version: *0.5.4*
+Version: *0.6*
 
 Python package to assist developers with constructing README as project evolves.
 * Feature #1
