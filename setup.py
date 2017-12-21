@@ -14,7 +14,7 @@ setup(
     constructing README as project evolves.
 
     docs @ http://write-me.readthedocs.io/""",
-    author='The write-me team: Chelsea, Chris, Matt, Darren, Gabe',
+    author='The write-me team: Chelsea Chris Matt Darren Gabe',
     author_email='writeme.pypi@gmail.com',
     url='https://github.com/chelseadole/write-me',
     download_url='https://github.com/chelseadole/write-me/archive/0.6.tar.gz',
