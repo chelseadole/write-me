@@ -64,7 +64,6 @@ class TestScaffold(TestCase):
     def test_make_scaffold_creates_setup_dict_and_contains_info(self):
         """Test that setup_dict is created successfully in make_scaffold."""
         assert isinstance(setup_dict, dict)
-        assert "name" in setup_dict.keys()
         assert "version" in setup_dict.keys()
         assert isinstance(setup_dict['author'], list)
 
