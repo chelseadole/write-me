@@ -1,9 +1,9 @@
 # write-me
 ---
 ### Description
-[![Build Status](https://travis-ci.org/chelseadole/write-me.svg?branch=staging)](https://travis-ci.org/chelseadole/write-me) [![Coverage Status](https://coveralls.io/repos/github/chelseadole/write-me/badge.svg)](https://coveralls.io/github/chelseadole/write-me) [![PyPI version](https://badge.fury.io/py/write-me.svg)](https://badge.fury.io/py/write-me)
+[![Build Status](https://travis-ci.org/chelseadole/write-me.svg?branch=master)](https://travis-ci.org/chelseadole/write-me) [![Coverage Status](https://coveralls.io/repos/github/chelseadole/write-me/badge.svg)](https://coveralls.io/github/chelseadole/write-me)
 
-Version: *0.5.4*
+Version: *0.5.6*
 
 Python package to assist developers with constructing README as project evolves.
 * Feature #1
@@ -60,6 +60,7 @@ The testing files for this project are:
 |:---:|:---:|
 | `./test_dep_info.py` | Test dep_info module. |
 | `./readme_generator/test_scaffold.py` |  |
+| `./write_me/conftest.py` |  |
 | `./write_me/test_django_setings_info.py` | Test django settings module. |
 | `./write_me/test_list_files.py` | Test for files listed. |
 | `./write_me/test_project_data.py` | Test project data module. |
