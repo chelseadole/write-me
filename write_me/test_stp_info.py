@@ -18,16 +18,6 @@ def test_dict_not_empty():
     assert setup_dict
 
 
-def test_dict_contains_name():
-    """Test 'name' is key in dict."""
-    assert 'name' in setup_dict
-
-
-def test_dict_name_key_has_correct_value():
-    """Test 'name' key has correct value."""
-    assert setup_dict['name'] == "write_me"
-
-
 def test_dict_contains_packages():
     """Test 'packages' is key in dict."""
     assert 'packages' in setup_dict
@@ -35,7 +25,7 @@ def test_dict_contains_packages():
 
 def test_dict_name_packages_has_correct_value():
     """Test 'name' key has correct value. Should be empty string."""
-    assert setup_dict['packages'] == ""
+    assert type(setup_dict['packages']) is str
 
 
 def test_dict_contains_author():
