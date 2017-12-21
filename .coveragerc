@@ -3,7 +3,7 @@ include=write_me/list_files.py
         write_me/tsting_info.py
         readme_generator/make_scaffold.py
         write_me/dep_info.py
-        write_me/django_url_info.py
+        write_me/django_uri_info.py
         write_me/get_docstrings.py
         write_me/stp_info.py
         write_me/pyramid_ini.py
