@@ -12,6 +12,7 @@ from write_me.dep_info import parse
 from write_me.get_license import get_license_type
 from write_me.tsting_info import get_docstrings
 from write_me.stp_info import parse_setup_py
+from write_me.project_data import get_project_url
 
 from readme_generator.scaffold_options import test_options, serving_options, frameworks, dbms, languages
 
@@ -22,19 +23,15 @@ dependencies = parse()
 license = get_license_type()
 test_dict = get_docstrings()
 get_all_py = get_all_py_files()
-testing_mod = parse(get_all_py)
+user_data = get_project_url()
 
-# if os.path.isfile('requirements.txt'):
-#     with open('requirements.txt', 'r') as f:
-#         testing_mod = ''
-#         for line in f:
-#             line = line.strip()
-#             if "nose" in line:
-#                 testing_mod = "nose"
-#             elif "pytest" in line:
-#                 testing_mod = "pytest"
-#         if not testing_mod:
-#             testing_mod = "unittest"
+testing_lst = parse(get_all_py)
+testing_mod = ''
+for i in testing_lst:
+    if i == "pytest" or i == "nose":
+        testing_mod = i
+if not testing_mod:
+    testing_mod = "unittest"
 
 # os.system('rm README.md')
 # os.system('touch README.md')
@@ -84,7 +81,6 @@ def main():
     else:
         readme = 'README.md'
 
-    import pdb; pdb.set_trace()
     with open(readme, 'w') as f:
         w = mg.Writer(f)
         w.write_heading(setup_dict['name'], 1)
@@ -132,6 +128,7 @@ def main():
         prereqs.append(mg.link('https://git-scm.com/', 'git'))
         w.write(prereqs)
 
+        import pdb; pdb.set_trace()
         # GETTING STARTED: Cloning/VE Instructions
         w.write_heading(mg.emphasis('Installation'), 5)
         w.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository. To accomplish this, execute these commands:')
