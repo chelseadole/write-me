@@ -14,11 +14,10 @@ Python package to assist developers with constructing README as project evolves.
 * [Chris Closser](https://github.com/chelseadole/write-me)
 * [Gabriel Meringolo](https://github.com/chelseadole/write-me)
 
-### Documentation
+### Dependencies
 ---
-Additional documentation can be found at: http://write-me.readthedocs.io/en/stable/
-### Getting Started
----
+* markdown_generator
+
 ##### *Prerequisites*
 * [python (3.6+)](https://www.python.org/downloads/)
 * [pip](https://pip.pypa.io/en/stable/)
@@ -35,10 +34,6 @@ Now now that you have cloned your repo and changed directories into the project,
 `$ python3 -m venv ENV`
 `$ source ENV/bin/activate`
 `$ pip install -r requirements.txt`
-##### *Serving Locally*
-Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command at the root level of your application, at the same level as `development.ini` and `production.ini`.
-`$ pserve development.ini`
-Once you have executed this command, open your browser, and go to `localhost:6543/`.
 ### Test Suite
 ---
 ##### *Running Tests*
@@ -55,32 +50,20 @@ The testing files for this project are:
 | File Name | Description |
 |:---:|:---:|
 | `./readme_generator/test_scaffold.py` | Test file for ensure scaffolding functionality. |
+| `./write_me/test_dep_info.py` | Test dep_info module. |
 | `./write_me/test_list_files.py` | Test for files listed. |
 | `./write_me/test_stp_info.py` | Test the setup.py parsing function. |
 | `./write_me/test_tsting_info.py` | Test test info dict. |
 | `./write_me/test/test_class.py` | Linked list. |
 | `./write_me/test/test_scaffold.py` | Tests for scaffold of README generator. |
 
-### URLs
----
-The URLs for this project are:
-
-| URL | Description |
-|:---:|:---:|
-| `/images` | Library of all images |
-| `/images/edit` | Edit view for a single image |
-| `/images/add` | Add form for a new image |
-
 ### Development Tools
 ---
 * *python* - programming language
 
-### Contributions
----
-If you wish to contribute to this project, please contact chelseadole@gmail.com.
 ### License
 ---
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+This project is licensed under MIT License - see the LICENSE.md file for details.
 ### Acknowledgements
 ---
 * Coffee

@@ -1,6 +1,6 @@
 """Get license type from github license file."""
 
-from list_files import get_license
+from write_me.list_files import get_license
 
 LICENSE = get_license()
 

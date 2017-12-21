@@ -4,18 +4,23 @@ import os
 import shutil
 import argparse
 
+from write_me.django_setings_info import get_settings_info
+from write_me.django_uri_info import get_url_docstrings
+from write_me.dep_info import parse
+from write_me.get_license import get_license_type
 from write_me.tsting_info import get_docstrings
 from write_me.stp_info import parse_setup_py
-from .scaffold_options import test_options, serving_options, frameworks, dbms, languages
-from write_me.django_setings_info import get_settings_info
-from write_me.django_uri_info import get_docstrings
-from write_me.dep_info import parse
+
+from readme_generator.scaffold_options import test_options, serving_options, frameworks, dbms, languages
 
 settings_dict = get_settings_info()
-url_dict = get_docstrings()
+url_dict = get_url_docstrings()
 setup_dict = parse_setup_py()
 dependencies = parse()
-import pdb; pdb.set_trace()
+license = get_license_type()
+test_dict = get_docstrings()
+
+
 # os.system('rm README.md')
 # os.system('touch README.md')
 
@@ -70,7 +75,7 @@ def main():
             line = line.strip()
             reqs.append(line)
     reqs = [i.split('==')[0] for i in reqs]
-
+    import pdb; pdb.set_trace()
     with open(readme, 'w') as f:
         w = mg.Writer(f)
         w.write_heading(setup_dict['name'], 1)
@@ -92,13 +97,22 @@ def main():
             authors.append(mg.link(setup_dict['url'], setup_dict['author'][i]))
         w.write(authors)
 
-        # DOCS
-        w.write_heading('Documentation', 3)
+        # DEPENDENCIES
+        w.write_heading('Dependencies', 5)
         w.write_hrule()
-        w.writeline('Additional documentation can be found at: {}'.format('http://write-me.readthedocs.io/en/stable/'))
+        deps = mg.List()
+        for dep in dependencies:
+            deps.append(dep)
+        w.write(deps)
 
-        w.write_heading('Getting Started', 3)
-        w.write_hrule()
+        if args.verbose:
+            # DOCS
+            w.write_heading('Documentation', 3)
+            w.write_hrule()
+            w.writeline('Additional documentation can be found at: {}'.format('http://write-me.readthedocs.io/en/stable/'))
+
+            w.write_heading('Getting Started', 3)
+            w.write_hrule()
 
         # GETTING STARTED: Installation requirements
         w.write_heading(mg.emphasis('Prerequisites'), 5)
@@ -154,7 +168,6 @@ def main():
         w.writeline()
         w.writeline('`$ pytest --cov`')
 
-        test_dict = get_docstrings()
         w.write_heading(mg.emphasis('Test Files'), 5)
         w.writeline('The testing files for this project are:')
         w.writeline()
@@ -165,19 +178,28 @@ def main():
             test_table.append('`{}`'.format(key), val)
         w.write(test_table)
 
-        if has_web_framework:
-            # URLS - table
+        # URLS - table
+        if args.django or args.pyramid or args.flask:
             w.write_heading('URLs', 3)
             w.write_hrule()
-            w.writeline('The URLs for this project are:')
+            w.writeline('The URLS for this project can be found in the following modules:')
             w.writeline()
             urls_table = mg.Table()
-            urls_table.add_column('URL', mg.Alignment.CENTER)
+            urls_table.add_column('URL module', mg.Alignment.CENTER)
             urls_table.add_column('Description', mg.Alignment.CENTER)
-            urls_table.append('`/images`', 'Library of all images')
-            urls_table.append('`/images/edit`', 'Edit view for a single image')
-            urls_table.append('`/images/add`', 'Add form for a new image')
+            for key, val in url_dict.items():
+                urls_table.append(key, val)
             w.write(urls_table)
+
+        # APPLICATIONS (Django) -v
+        if args.django and args.verbose:
+            w.write_heading('Django Apps', 3)
+            w.write_hrule()
+            models_list = mg.List()
+            for model in settings_dict['INSTALLED_APPS']:
+                if "django.contrib" not in model:
+                    models_list.append(model)
+            w.write(models_list)
 
         # TOOLS
         w.write_heading('Development Tools', 3)
@@ -193,15 +215,16 @@ def main():
                 tools_list.append('{} - programming language'.format(mg.emphasis(package.lower())))
         w.write(tools_list)
 
-        # CONTRIBUTIONS
-        w.write_heading('Contributions', 3)
-        w.write_hrule()
-        w.writeline('If you wish to contribute to this project, please contact {}.'.format(setup_dict['author_email']))
+        if args.verbose:
+            # CONTRIBUTIONS
+            w.write_heading('Contributions', 3)
+            w.write_hrule()
+            w.writeline('If you wish to contribute to this project, please contact {}.'.format(setup_dict['author_email']))
 
         # LICENSE
         w.write_heading('License', 3)
         w.write_hrule()
-        w.writeline('This project is licensed under the MIT License - see the LICENSE.md file for details.')
+        w.writeline('This project is licensed under {} - see the LICENSE.md file for details.'.format(license))
 
         # ACKNOWLEDGEMENTS
         w.write_heading('Acknowledgements', 3)
@@ -222,3 +245,5 @@ def main():
             * Populate "Acknowledgements" section
 
         """
+if __name__ == "__main__":
+    main()

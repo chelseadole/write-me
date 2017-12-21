@@ -1,17 +1,15 @@
-# write_me
+# Project Title
 ---
-Python package to assist developers with constructing README as project evolves.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 * Feature #1
 * Feature #2
 * Feature #3
 
 ### Authors
 ---
-* [Chelsea Dole](https://github.com/chelseadole/write-me)
-* [Matt Favoino](https://github.com/chelseadole/write-me)
-* [Darren Haynes](https://github.com/chelseadole/write-me)
-* [Chris Closser](https://github.com/chelseadole/write-me)
-* [Gabriel Meringolo](https://github.com/chelseadole/write-me)
+* [Person1](www.github.com/chelseadole)
+* [Person2](www.github.com/chelseadole)
+* [Person3](www.github.com/chelseadole)
 
 ### Getting Started
 ---
@@ -24,7 +22,7 @@ Python package to assist developers with constructing README as project evolves.
 First, clone the project repo from Github. Then, change directories into the cloned repository, create a new virtual environment, and install the repo requirements into your VE. To accomplish this, execute these commands:
 
 `$ git clone https://github.com/chelseadole/write-me.git`
-`$ cd write_me`
+`$ cd write-me`
 
 Now now that you have cloned your repo and changed directories into the project, create a virtual environment, and download the project requirements into your VE.
 
@@ -32,7 +30,7 @@ Now now that you have cloned your repo and changed directories into the project,
 `$ source ENV/bin/activate`
 `$ pip install -r requirements.txt`
 ##### *Serving Locally*
-Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`.
+Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command from your terminal, on the same level as `manage.py`:
 `$ ./manage.py runserver`
 Once you have executed this command, open your browser, and go to `localhost:8000/`.
 ### Test Suite
@@ -64,11 +62,14 @@ The URLs for this project are:
 
 ### Development Tools
 ---
-* *python* - programming language
+* Django
+* Postgres
+* Python
+* MongoDB
 
 ### Contributions
 ---
-If you wish to contribute to this project, please contact chelseadole@gmail.com.
+If you wish to contribute to this project, please contact NAME1 or NAME2.
 ### License
 ---
 This project is licensed under the MIT License - see the LICENSE.md file for details.

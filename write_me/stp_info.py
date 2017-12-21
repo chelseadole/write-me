@@ -15,7 +15,7 @@ setup_keys = ['name',
 
 
 def parse_setup_py():
-    """Covert needed info from setup.py into dict."""
+    """Convert needed info from setup.py into dict."""
     setup_files = get_setup_file()
     if not setup_files:
         raise FileNotFoundError("No setup.py file found in root directory")
