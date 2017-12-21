@@ -2,6 +2,8 @@
 
 from readme_generator.make_scaffold import dependencies, license, setup_dict, user_data
 
+import markdown_generator as mg
+
 
 def test_user_data_populated_in_make_scaffold():
     """Test that make_scaffold creates a populated user_data dict."""
