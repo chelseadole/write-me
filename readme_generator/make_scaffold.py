@@ -12,6 +12,7 @@ from write_me.dep_info import parse
 from write_me.get_license import get_license_type
 from write_me.tsting_info import get_docstrings
 from write_me.stp_info import parse_setup_py
+from write_me.project_data import get_project_url
 
 from readme_generator.scaffold_options import test_options, serving_options, frameworks, dbms, languages
 
@@ -22,19 +23,15 @@ dependencies = parse()
 license = get_license_type()
 test_dict = get_docstrings()
 get_all_py = get_all_py_files()
-testing_mod = parse(get_all_py)
+user_data = get_project_url()
 
-# if os.path.isfile('requirements.txt'):
-#     with open('requirements.txt', 'r') as f:
-#         testing_mod = ''
-#         for line in f:
-#             line = line.strip()
-#             if "nose" in line:
-#                 testing_mod = "nose"
-#             elif "pytest" in line:
-#                 testing_mod = "pytest"
-#         if not testing_mod:
-#             testing_mod = "unittest"
+testing_lst = parse(get_all_py)
+testing_mod = ''
+for i in testing_lst:
+    if i == "pytest" or i == "nose":
+        testing_mod = i
+if not testing_mod:
+    testing_mod = "unittest"
 
 # os.system('rm README.md')
 # os.system('touch README.md')
@@ -84,14 +81,14 @@ def main():
     else:
         readme = 'README.md'
 
-    import pdb; pdb.set_trace()
     with open(readme, 'w') as f:
         w = mg.Writer(f)
-        w.write_heading(setup_dict['name'], 1)
+        w.write_heading(user_data['project_name'], 1)
         w.write_hrule()
 
         # Description and Key Features
         w.writeline('Version: ' + mg.emphasis(setup_dict['version']))
+        w.writeline()
         w.writeline(setup_dict['description'])
         key_features = mg.List()
         key_features.append('Feature #1')
@@ -108,7 +105,7 @@ def main():
         w.write(authors)
 
         # DEPENDENCIES
-        w.write_heading('Dependencies', 5)
+        w.write_heading('Dependencies', 3)
         w.write_hrule()
         deps = mg.List()
         for dep in dependencies:
@@ -124,6 +121,8 @@ def main():
             w.write_heading('Getting Started', 3)
             w.write_hrule()
 
+        w.write_heading('Getting Started', 3)
+
         # GETTING STARTED: Installation requirements
         w.write_heading(mg.emphasis('Prerequisites'), 5)
         prereqs = mg.List()
@@ -132,17 +131,21 @@ def main():
         prereqs.append(mg.link('https://git-scm.com/', 'git'))
         w.write(prereqs)
 
+        import pdb; pdb.set_trace()
         # GETTING STARTED: Cloning/VE Instructions
         w.write_heading(mg.emphasis('Installation'), 5)
         w.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository. To accomplish this, execute these commands:')
         w.writeline()
-        w.writeline('`$ git clone {}.git`'.format(setup_dict['url']))
-        w.writeline('`$ cd {}`'.format(setup_dict['name']))
+        w.writeline('`$ git clone {}.git`'.format(user_data['url']))
+        w.writeline()
+        w.writeline('`$ cd {}`'.format(user_data['project_name']))
         w.writeline()
         w.writeline('Now now that you have cloned your repo and changed directories into the project, create a virtual environment named "ENV", and install the project requirements into your VE.')
         w.writeline()
         w.writeline('`$ python3 -m venv ENV`')
+        w.writeline()
         w.writeline('`$ source ENV/bin/activate`')
+        w.writeline()
         w.writeline('`$ pip install -r requirements.txt`')
 
         if args.django:

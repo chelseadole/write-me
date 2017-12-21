@@ -28,6 +28,8 @@ def get_project_url():
     with open('./.git/config', 'r') as git_config:
         for line in git_config:
             if "url = git@" in line:
+                dont_need, need = line.split(' = ')
+            if "url = git@" in line:
                 dont_need, need = line.split('@')
                 url = need.strip()
                 url = url.replace(':', '/')
