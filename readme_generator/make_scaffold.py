@@ -112,24 +112,23 @@ def main():
             authors.append(mg.link(user_data['project_user_profile_url'], setup_dict['author'][i]))
         w.write(authors)
 
-        # DEPENDENCIES
-        w.write_heading('Dependencies', 3)
-        w.write_hrule()
-        deps = mg.List()
-        for dep in dependencies:
-            deps.append(dep)
-        w.write(deps)
+        if len(dependencies) > 0:
+            # DEPENDENCIES
+            w.write_heading('Dependencies', 3)
+            w.write_hrule()
+            deps = mg.List()
+            for dep in dependencies:
+                deps.append(dep)
+            w.write(deps)
 
         if args.verbose:
             # DOCS
             w.write_heading('Documentation', 3)
             w.write_hrule()
-            w.writeline('Additional documentation can be found at: {}'.format('http://write-me.readthedocs.io/en/stable/'))
-
-            w.write_heading('Getting Started', 3)
-            w.write_hrule()
+            w.writeline('Additional documentation can be found at: YOUR DOC SITE HERE')
 
         w.write_heading('Getting Started', 3)
+        w.write_hrule()
 
         # GETTING STARTED: Installation requirements
         w.write_heading(mg.emphasis('Prerequisites'), 5)
@@ -220,7 +219,7 @@ def main():
             w.write_hrule()
             models_list = mg.List()
             for model in settings_dict['INSTALLED_APPS']:
-                if "django.contrib" not in model:
+                if "django.contrib" not in model and "storages" not in model:
                     models_list.append(model)
             w.write(models_list)
 
@@ -229,9 +228,9 @@ def main():
             w.write_heading('Pyramid Development Files', 3)
             w.write_hrule()
             w.writeline('Development files specific to the Pyramid web framework can be found in the following files:')
-            pyr_table = mg.Table()
+            pyr_table = mg.List()
             for key, val in pyramid_info.items():
-                pyr_table.append(key, val)
+                pyr_table.append(key)
             w.write(pyr_table)
 
         # TOOLS
