@@ -1,6 +1,7 @@
-# write_me
+# write-me
 ---
 Version: *0.51*
+
 Python package to assist developers with constructing README as project evolves.
 * Feature #1
 * Feature #2
@@ -14,11 +15,12 @@ Python package to assist developers with constructing README as project evolves.
 * [Chris Closser](https://github.com/chelseadole/write-me)
 * [Gabriel Meringolo](https://github.com/chelseadole/write-me)
 
-##### Dependencies
+### Dependencies
 ---
 * markdown_generator
 * project_info
 
+### Getting Started
 ##### *Prerequisites*
 * [python (3.6+)](https://www.python.org/downloads/)
 * [pip](https://pip.pypa.io/en/stable/)
@@ -27,14 +29,16 @@ Python package to assist developers with constructing README as project evolves.
 ##### *Installation*
 First, clone the project repo from Github. Then, change directories into the cloned repository. To accomplish this, execute these commands:
 
-`$ git clone https://github.com/chelseadole/write-me.git
-.git`
-`$ cd write-me.git`
+`$ git clone https://github.com/chelseadole/write-me.git`
+
+`$ cd write-me`
 
 Now now that you have cloned your repo and changed directories into the project, create a virtual environment named "ENV", and install the project requirements into your VE.
 
 `$ python3 -m venv ENV`
+
 `$ source ENV/bin/activate`
+
 `$ pip install -r requirements.txt`
 ### Test Suite
 ---
