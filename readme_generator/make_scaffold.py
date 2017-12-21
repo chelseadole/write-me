@@ -15,8 +15,8 @@ from write_me.get_license import get_license_type
 from write_me.list_files import get_all_py_files
 from write_me.project_data import get_project_url
 from write_me.pyramid_ini import get_dev_info
-from write_me.travis_badge import get_travis_badge
 from write_me.stp_info import parse_setup_py
+from write_me.travis_badge import get_travis_badge
 from write_me.tsting_info import get_docstrings
 
 settings_dict = get_settings_info()

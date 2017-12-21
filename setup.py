@@ -1,5 +1,5 @@
 """Setup script for write-me Python package."""
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 
 setup(
@@ -9,13 +9,13 @@ setup(
         'console_scripts': ['genreadme=readme_generator.make_scaffold:main'],
     },
     version='0.6',
-    description='Python package to assist developers with constructing README as project evolves.',
-    author=['Chelsea Dole',
-            'Matt Favoino',
-            'Darren Haynes',
-            'Chris Closser',
-            'Gabriel Meringolo'],
-    author_email='chelseadole@gmail.com',
+    description="""
+    Python package to assist developers with
+    constructing README as project evolves.
+
+    docs @ http://write-me.readthedocs.io/""",
+    author='The write-me team: Chelsea, Chris, Matt, Darren, Gabe',
+    author_email='writeme.pypi@gmail.com',
     url='https://github.com/chelseadole/write-me',
     download_url='https://github.com/chelseadole/write-me/archive/0.6.tar.gz',
     keywords=['Python', 'README', 'PyPi', 'pip'],
