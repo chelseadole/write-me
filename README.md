@@ -1,22 +1,22 @@
 # write-me
 ---
 ### Description
-[![Build Status](https://travis-ci.org/chelseadole/write-me.svg?branch=master)](https://travis-ci.org/chelseadole/write-me) [![Coverage Status](https://coveralls.io/repos/github/chelseadole/write-me/badge.svg)](https://coveralls.io/github/chelseadole/write-me)
+[![Build Status](https://travis-ci.org/chelseadole/write-me.svg?branch=master)](https://travis-ci.org/chelseadole/write-me) [![Coverage Status](https://coveralls.io/repos/github/chelseadole/write-me/badge.svg)](https://coveralls.io/github/chelseadole/write-me) [![PyPI version](https://badge.fury.io/py/write-me.svg)](https://badge.fury.io/py/write-me)
 
-Version: *0.5.6*
+Version: *0.6*
 
-Python package to assist developers with constructing README as project evolves.
-* Feature #1
-* Feature #2
-* Feature #3
+Python package to assist developers by generating a README.md file based on a repository.
+* Elegant, automatic Markdown formatting
+* Commandline options for Django, Pyramid, and Flask
+* Installation, testing, and local serving instructions based on codebase
 
 ### Authors
 ---
-* [Chelsea Dole](https://github.com/chelseadole/write-me)
-* [Matt Favoino](https://github.com/chelseadole/write-me)
-* [Darren Haynes](https://github.com/chelseadole/write-me)
-* [Chris Closser](https://github.com/chelseadole/write-me)
-* [Gabriel Meringolo](https://github.com/chelseadole/write-me)
+* [Chelsea Dole](https://github.com/chelseadole)
+* [Matt Favoino](https://github.com/famavott)
+* [Darren Haynes](https://github.com/darren-haynes)
+* [Chris Closser](https://github.com/ChristopherSClosser)
+* [Gabriel Meringolo](https://github.com/gabrielx52)
 
 ### Dependencies
 ---

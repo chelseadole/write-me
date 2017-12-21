@@ -140,7 +140,7 @@ def parse(files=PY_FILES):
                     if ret.startswith('import'):
                         libbies.append(ret.split('import')[1].strip())
                     if ret.startswith('from'):
-                        libbies.append(ret.split('import')[0].lstrip('from ').strip())
+                        libbies.append(ret.split('import')[0].split('from ')[-1].strip())
     for lib in libbies:
         if ' as ' in lib:
             libbies.append(lib.split(' as ')[0])

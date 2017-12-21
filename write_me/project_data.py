@@ -34,21 +34,22 @@ def get_project_url():  # pragma no cover
                     dont_need, need = line.split('@')
                     url = need.strip()
                     url = url.replace(':', '/')
-                    url = url.rstrip('.git')
+                    url = url.replace('.git', '')
                     url = url.replace(url, 'https://' + url)
                     project_info['url'] = url
                     break
                 elif "url = https://github.com" in line:
                     dont_need, need = line.split(' = ')
                     url = need.strip()
-                    url = url.rstrip(".git")
+                    url = url.replace(".git", '')
                     project_info['url'] = url
                     break
 
     except FileNotFoundError:
+        project_info['url'] = "YOUR PROJECT URL HERE"
         project_info['project_user'] = "YOUR NAME HERE"
         project_info['project_name'] = "YOUR PROJECT NAME HERE"
-        project_info['url'] = "YOUR PROJECT URL HERE"
+        project_info['project_user_profile_url'] = "YOUR USER PROFILE URL HERE"
         return project_info
 
     project_user = get_user_name(url)
@@ -56,7 +57,7 @@ def get_project_url():  # pragma no cover
     project_name = get_project_name(url)
     project_info['project_name'] = project_name
     project_user_profile_url = get_user_profile_url(project_user)
-    project_info['url'] = project_user_profile_url
+    project_info['project_user_profile_url'] = project_user_profile_url
 
     return project_info
 
