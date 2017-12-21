@@ -10,7 +10,9 @@ def get_license_type():
     if LICENSE:
         with open(LICENSE[0], 'r') as lf:
             lines = lf.readline()
-            return lines.strip()
+            license = lines.strip()
+            return 'This project is licensed under {} - see the LICENSE.md file for details.'.format(license)
+    return 'This package does not have a license.'
 
 
 if __name__ == '__main__':  # pragma no cover
