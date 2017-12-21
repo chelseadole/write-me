@@ -1,7 +1,7 @@
 # write-me
 ---
 ### Description
-[![Build Status](https://travis-ci.org/chelseadole/write-me.svg?branch=master)](https://travis-ci.org/chelseadole/write-me) [![Coverage Status](https://coveralls.io/repos/github/chelseadole/write-me/badge.svg)](https://coveralls.io/github/chelseadole/write-me)
+[![Build Status](https://travis-ci.org/chelseadole/write-me.svg?branch=staging)](https://travis-ci.org/chelseadole/write-me) [![Coverage Status](https://coveralls.io/repos/github/chelseadole/write-me/badge.svg)](https://coveralls.io/github/chelseadole/write-me)[![PyPI version](https://badge.fury.io/py/write-me.svg)](https://badge.fury.io/py/write-me)
 
 Version: *0.5.4*
 
