@@ -146,7 +146,7 @@ def parse(files=PY_FILES):
             libbies.append(lib.split(' as ')[0])
             libbies.remove(lib)
         if ', ' in lib:
-            lib = lib.extend(lib.split(', '))
+            libbies.extend(lib.split(', '))
             libbies.remove(lib)
     libbies = {lib for lib in libbies if lib not in STD_LIST}
     final = []
