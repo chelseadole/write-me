@@ -131,7 +131,6 @@ def main():
         prereqs.append(mg.link('https://git-scm.com/', 'git'))
         w.write(prereqs)
 
-        import pdb; pdb.set_trace()
         # GETTING STARTED: Cloning/VE Instructions
         w.write_heading(mg.emphasis('Installation'), 5)
         w.writeline('First, clone the project repo from Github. Then, change directories into the cloned repository. To accomplish this, execute these commands:')
