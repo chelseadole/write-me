@@ -26,14 +26,14 @@ def get_settings_info():
             txt = sf.read()
             regex = re.compile(r'INSTALLED_APPS = (.*?\])', re.DOTALL)
             result = re.search(regex, txt)
-            if not result:
-                settings_info['INSTALLED_APPS'] = ["APPS NOT FOUND, ADD YOUR APPS HERE"]
-            else:
+            if result:
                 try:
                     apps_list = ast.literal_eval(re.sub(r'\s*', '', result.group(1)))
                     settings_info['INSTALLED_APPS'] = apps_list
                 except ValueError:
                     settings_info['INSTALLED_APPS'] = ["APPS NOT FOUND, ADD YOUR APPS HERE"]
+            else:
+                settings_info['INSTALLED_APPS'] = ["APPS NOT FOUND, ADD YOUR APPS HERE"]
 
     return settings_info
 
