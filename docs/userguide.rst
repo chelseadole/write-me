@@ -1,26 +1,6 @@
 User Guide
 ***********
 
-Description
-==============
-
-Generate a README, with the following sections:
-
-- Project Overview (Description, Version, Highlight Features ^, Authors ^)
-- Documentation ~ ^ 
-- Getting Started (Prerequisites, Dependencies, Installation, Local Serving ^)
-- Testing (Running Tests, Testing Modules)
-- URLs (URL Modules)
-- Modules ~
-- Development Tools
-- Contributions ~
-- License
-- Acknowledgements ^
-
-    KEY:
-        - ^ Section cannot be fully automated. User editing necessary after README creation. 
-        - ~ Section generated only with use of verbose ``-v`` flag.
-
 Commandline Tools
 ==================
 
