@@ -8,17 +8,14 @@ setup(
     entry_points={
         'console_scripts': ['genreadme=readme_generator.make_scaffold:main'],
     },
-    version='0.6',
-    description="""
-    Python package to assist developers with
-    constructing README as project evolves.
-
-    docs @ http://write-me.readthedocs.io/""",
+    version='0.6.4',
+    description="Python package to assist developers with constructing README as project evolves.",
     author='The write-me team: Chelsea Chris Matt Darren Gabe',
     author_email='writeme.pypi@gmail.com',
-    url='https://github.com/chelseadole/write-me',
-    download_url='https://github.com/chelseadole/write-me/archive/0.6.tar.gz',
+    url='http://write-me.readthedocs.io/',
+    download_url='https://github.com/chelseadole/write-me/archive/0.6.4.tar.gz',
     keywords=['Python', 'README', 'PyPi', 'pip'],
+    license='MIT',
     classifiers=[],
     install_requires=[
         "markdown_generator",
