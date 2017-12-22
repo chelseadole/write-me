@@ -15,8 +15,8 @@ from write_me.get_license import get_license_type
 from write_me.list_files import get_all_py_files
 from write_me.project_data import get_project_url
 from write_me.pyramid_ini import get_dev_info
-from write_me.travis_badge import get_travis_badge
 from write_me.stp_info import parse_setup_py
+from write_me.travis_badge import get_travis_badge
 from write_me.tsting_info import get_docstrings
 
 settings_dict = get_settings_info()
@@ -154,6 +154,50 @@ def main():
         w.writeline()
         w.writeline('`$ pip install -r requirements.txt`')
 
+        if os.path.isfile('requirements.txt'):
+            with open('requirements.txt', 'r') as f:
+                reqs = []
+                for line in f:
+                    line = line.strip()
+                    reqs.append(line)
+            reqs = [i.split('==')[0] for i in reqs]
+
+            if args.django and "psycopg2" in reqs:
+                # Additional Django setup requirements using PostgreSQL
+                w.writeline()
+                w.writeline('Open PostgreSQL using the `psql` command from your Terminal.')
+                w.writeline('Create a PostgreSQL Database, called YOUR DBNAME HERE, using following command:')
+                w.writeline()
+                w.writeline('`USER=# CREATE DATABASE ~YOUR DB NAME HERE~;`')
+                w.writeline()
+                w.writeline('Now that your database exists, you can migrate this project\'s data into it. Outside of the PostgreSQL commandline, on the same level as your `manage.py` file, run:')
+                w.writeline('`$ ./manage.py migrate`')
+                w.writeline()
+
+            elif args.django and "mymssql" in reqs:
+                # Additional Django setup requirements using MySQL
+                w.writeline()
+                w.writeline('Open MySQL using the `psql` command from your Terminal, with your personal user data.')
+                w.writeline('Create a PostgreSQL Database, called YOUR DBNAME HERE, using following command:')
+                w.writeline()
+                w.writeline('`USER=# CREATE DATABASE ~YOUR DB NAME HERE~;`')
+                w.writeline()
+                w.writeline('Now that your database exists, you can migrate this project\'s data into it. Outside of the MySQL commandline, on the same level as your `manage.py` file, run:')
+                w.writeline('`$ ./manage.py migrate`')
+                w.writeline()
+
+            elif args.django and "cx_Oracle" in reqs:
+                # Additional Django setup requirements using Oracle
+                w.writeline()
+                w.writeline('Open Oracle using the `sqlplus` command from your Terminal.')
+                w.writeline('Create an Oracle Database, called YOUR DBNAME HERE, using following command:')
+                w.writeline()
+                w.writeline('`USER=# CREATE DATABASE ~YOUR DB NAME HERE~;`')
+                w.writeline()
+                w.writeline('Now that your database exists, you can migrate this project\'s data into it. Outside of the Oracle commandline, on the same level as your `manage.py` file, run:')
+                w.writeline('`$ ./manage.py migrate`')
+                w.writeline()
+
         if args.django:
             # GETTING STARTED: Serving the App (Django)
             w.write_heading(mg.emphasis('Serving Locally'), 5)
@@ -197,21 +241,21 @@ def main():
             for key, val in test_dict.items():
                 test_table.append('`{}`'.format(key), val)
             w.write(test_table)
-
-            # URLS - table
-            if args.django or args.pyramid or args.flask:
-                w.write_heading('URLs', 3)
-                w.write_hrule()
-                w.writeline('The URLS for this project can be found in the following modules:')
-                w.writeline()
-                urls_table = mg.Table()
-                urls_table.add_column('URL module', mg.Alignment.CENTER)
-                urls_table.add_column('Description', mg.Alignment.CENTER)
-                for key, val in url_dict.items():
-                    urls_table.append(key, val)
-                w.write(urls_table)
         else:
             w.writeline('This repository contains no tests.')
+
+        # URLS - table
+        if args.django or args.pyramid or args.flask:
+            w.write_heading('URLs', 3)
+            w.write_hrule()
+            w.writeline('The URLS for this project can be found in the following modules:')
+            w.writeline()
+            urls_table = mg.Table()
+            urls_table.add_column('URL module', mg.Alignment.CENTER)
+            urls_table.add_column('Description', mg.Alignment.CENTER)
+            for key, val in url_dict.items():
+                urls_table.append(key, val)
+            w.write(urls_table)
 
         # APPLICATIONS (Django) -v
         if args.django and args.verbose:
@@ -273,18 +317,17 @@ def main():
         w.write(shoutouts)
 
         w.writeline(mg.emphasis('This README was generated using ' + mg.link('https://github.com/chelseadole/write-me', 'writeme.')))
-    return """
+    print("""
 
         README generated.
 
         User TODOs:
             * Add application highlights to bullet-point "Features" section
-            * Add contributor Github URL links to "Authors" section
-            * Link additional documentation to "Documentation" section
+            * Add correct contributor Github URL links to "Authors" section
             * Populate "Acknowledgements" section
 
-        Please review your new README.
+        Please review your new README, and complete any sections that require additional user input.
 
-        """
+        """)
 if __name__ == "__main__":
     main()

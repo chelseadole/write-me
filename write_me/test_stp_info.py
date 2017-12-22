@@ -40,10 +40,6 @@ def test_dict_name_author_value_is_a_list():
 
 def test_dict_author_has_correct_authors():
     """Test 'author' key's value has correct authors."""
-    authors = ['Chelsea Dole',
-               'Matt Favoino',
-               'Darren Haynes',
-               'Chris Closser',
-               'Gabriel Meringolo']
+    authors = ['The write-me team: Chelsea Chris Matt Darren Gabe']
 
     assert setup_dict['author'] == authors
