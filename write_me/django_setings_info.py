@@ -32,7 +32,7 @@ def get_settings_info():
                     settings_info['INSTALLED_APPS'] = apps_list
                 else:
                     settings_info['INSTALLED_APPS'] = ["APPS NOT FOUND, ADD YOUR APPS HERE"]
-            except ValueError:
+            except:
                 settings_info['INSTALLED_APPS'] = ["APPS NOT FOUND, ADD YOUR APPS HERE"]
 
     return settings_info
