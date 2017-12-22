@@ -6,7 +6,9 @@
 Welcome to write-me's documentation!
 ===================================
 
-Write-me generates concise, effective, and specific READMEs based on your codebase.
+`Project Github <http://www.github.com/chelseadole/write-me>`_
+
+Write-me generates concise, elegant, and specific READMEs based on your codebase.
 
 Contents:
 
