@@ -119,11 +119,11 @@ def main():
             deps = mg.List()
             for dep in dependencies:
                 deps.append(dep)
-            if args.django and "django" not in deps:
+            if args.django and "django" not in dependencies:
                 deps.append("Django")
-            elif args.pyramid and "pyramid" not in deps:
+            elif args.pyramid and "pyramid" not in dependencies:
                 deps.append("Pyramid")
-            elif args.flask and "flask" not in deps:
+            elif args.flask and "flask" not in dependencies:
                 deps.append("Flask")
             w.write(deps)
 
