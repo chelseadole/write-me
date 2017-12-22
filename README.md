@@ -22,6 +22,10 @@ Python package to assist developers by generating a README.md file based on a re
 ---
 * markdown_generator
 
+### Documentation
+---
+Additional documentation can be found on our [Read the Docs](http://write-me.readthedocs.io/en/latest/) site.
+
 ### Getting Started
 ---
 ##### *Prerequisites*
