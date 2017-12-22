@@ -52,19 +52,23 @@ def parse_setup_py():
             if not appending:
                 for key in setup_keys:
                     if line.startswith(key):
-                        k, v = line.split('=')
-                        if v.startswith('['):
-                            if v.endswith(']'):
-                                v = ast.literal_eval(v)
-                                setup_parsed[k] = v
-                                continue
+                        try:
+                            k, v = line.split('=')
+                            if v.startswith('['):
+                                if v.endswith(']'):
+                                    v = ast.literal_eval(v)
+                                    setup_parsed[k] = v
+                                    continue
+                                else:
+                                    appending = True
+                                    v = v.lstrip('[')
+                                    create_list.append(v.strip("'"))
+                                    continue
                             else:
-                                appending = True
-                                v = v.lstrip('[')
-                                create_list.append(v.strip("'"))
+                                setup_parsed[k] = v.strip("'")
                                 continue
-                        else:
-                            setup_parsed[k] = v.strip("'")
+                        except:
+                            setup_parsed[key] = "NO INFO FOUND"
                             continue
                     else:
                         continue
