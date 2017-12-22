@@ -5,7 +5,7 @@ import shutil
 
 import markdown_generator as mg
 
-from readme_generator.scaffold_options import (dbms, frameworks, languages,
+from readme_generator.scaffold_options import (dbms, frameworks,
                                                serving_options, test_options,)
 
 from write_me.dep_info import parse
@@ -119,6 +119,12 @@ def main():
             deps = mg.List()
             for dep in dependencies:
                 deps.append(dep)
+            if args.django and "django" not in deps:
+                deps.append("Django")
+            elif args.pyramid and "pyramid" not in deps:
+                deps.append("Pyramid")
+            elif args.flask and "flask" not in deps:
+                deps.append("Flask")
             w.write(deps)
 
         if args.verbose:
@@ -227,7 +233,7 @@ def main():
             if args.django:
                 w.writeline('This is a Django application, and therefore to run tests, run the following command at the same level as `./manage.py`.')
                 w.writeline()
-                w.writeline('`./manage test`')
+                w.writeline('`./manage.py test`')
             else:
                 w.writeline('This application uses {} as a testing suite. To run tests, run:'.format(mg.link(test_options[testing_mod][0], testing_mod)))
                 w.writeline()
@@ -299,8 +305,6 @@ def main():
                     tools_list.append('{} - web framework'.format(mg.emphasis(package.lower())))
                 elif package.lower() in dbms:
                     tools_list.append('{} - DB management system'.format(mg.emphasis(package.lower())))
-                elif package.lower() in languages:
-                    tools_list.append('{} - programming language'.format(mg.emphasis(package.lower())))
         w.write(tools_list)
 
         if args.verbose:

@@ -29,8 +29,5 @@ serving_options = {
     }
 }
 
-frameworks = ['django', 'pyramid', 'flask', 'tornado', 'falcon', 'hug', 'sanic', 'cherrypy']
-dbms = ["postgres", "mysql", "mongodb", "sqlite", "oracle"]
-languages = ["python", "javascript", "react", "node", "java", "swift", "c#", "c++", "c", "php", "ruby on rails", "haskell", "coffeescript"]
-
-markup = []
+frameworks = ["django", "pyramid", "flask", "tornado", "falcon", "hug", "sanic", "cherrypy"]
+dbms = ["postgres", "psycopg2", "mysql", "mongodb", "sqlite", "oracle"]
