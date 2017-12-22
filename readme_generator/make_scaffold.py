@@ -224,13 +224,18 @@ def main():
         w.write_hrule()
         if len(test_dict.keys()) > 0:
             w.write_heading(mg.emphasis('Running Tests'), 5)
-            w.writeline('This application uses {} as a testing suite. To run tests, run:'.format(mg.link(test_options[testing_mod][0], testing_mod)))
-            w.writeline()
-            w.writeline('`{}`'.format(test_options[testing_mod][1]))
-            w.writeline()
-            w.writeline('To view test coverage, run:')
-            w.writeline()
-            w.writeline('`{}`'.format(test_options[testing_mod][2]))
+            if args.django:
+                w.writeline('This is a Django application, and therefore to run tests, run the following command at the same level as `./manage.py`.')
+                w.writeline()
+                w.writeline('`./manage test`')
+            else:
+                w.writeline('This application uses {} as a testing suite. To run tests, run:'.format(mg.link(test_options[testing_mod][0], testing_mod)))
+                w.writeline()
+                w.writeline('`{}`'.format(test_options[testing_mod][1]))
+                w.writeline()
+                w.writeline('To view test coverage, run:')
+                w.writeline()
+                w.writeline('`{}`'.format(test_options[testing_mod][2]))
 
             w.write_heading(mg.emphasis('Test Files'), 5)
             w.writeline('The testing files for this project are:')
