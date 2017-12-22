@@ -17,14 +17,14 @@ from write_me.project_data import get_project_url
 from write_me.pyramid_ini import get_dev_info
 from write_me.stp_info import parse_setup_py
 from write_me.travis_badge import get_travis_badge
-from write_me.tsting_info import get_docstrings
+from write_me.tsting_info import get_test_docstrings
 
 settings_dict = get_settings_info()
 url_dict = get_url_docstrings()
 setup_dict = parse_setup_py()
 dependencies = parse()
 license = get_license_type()
-test_dict = get_docstrings()
+test_dict = get_test_docstrings()
 get_all_py = get_all_py_files()
 user_data = get_project_url()
 pyramid_info = get_dev_info()
