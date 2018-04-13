@@ -79,6 +79,7 @@ The testing files for this project are:
 ### Development Tools
 ---
 * *python* - programming language
+* *PyPI*
 
 ### License
 ---
